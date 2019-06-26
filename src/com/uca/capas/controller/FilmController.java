@@ -27,7 +27,7 @@ public class FilmController {
 	@Autowired
 	private FilmRepository filmRepo;
 	
-	@RequestMapping("film/vertodos")
+	@RequestMapping("film/list")
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
 				@RequestParam(required = false) Integer direccion) throws Exception{
@@ -64,5 +64,13 @@ public class FilmController {
 			mav.setViewName("film/view_all");
 			return mav;
 		}
+	
+	@RequestMapping("film/new")
+	public ModelAndView crear(HttpSession session, 
+			HttpServletRequest request) throws Exception{
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("film/new");
+			return mav;
+	}
 }
 
