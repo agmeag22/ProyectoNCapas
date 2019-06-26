@@ -6,14 +6,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Ver Pelicula</title>
+<title>Listado Pelicula</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
-<h1>Ver Pelicula</h1>
+<h1>Listado Peliculas</h1>
 <a class="btn btn-secondary" href=" ${pageContext.request.contextPath}/film/new	">Crear Pelicula	</a>
+<a class="btn btn-secondary" href=" ${pageContext.request.contextPath}/function/list">Listado Funciones</a>
 <br/>
 	<table class="table">
 	<thead>
