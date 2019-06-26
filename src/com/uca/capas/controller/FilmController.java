@@ -11,7 +11,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,6 +57,7 @@ public class FilmController {
 			List<Film> films = null;
 			
 			films = filmService.findAll(pagina);
+			System.out.println("El tamañò es:"+films.size());
 			//films=(List<Film>) filmRepo.findAll();
 			//Como Page no es una coleccion en si, utilizo el metodo getContent() el cual me devuelve la coleccion (de clientes) que representa la pagina
 			mav.addObject("films", films);
@@ -71,6 +74,13 @@ public class FilmController {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("film/new");
 			return mav;
+	}
+	
+	
+	@RequestMapping(value="film/store",method=RequestMethod.POST)
+	public String store(@ModelAttribute(name="sucursal") Film film ,HttpServletRequest request) throws Exception{
+		filmService.save(film);
+		return "redirect:/film/list";	
 	}
 }
 
