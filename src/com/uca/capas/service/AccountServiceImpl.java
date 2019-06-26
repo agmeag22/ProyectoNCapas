@@ -55,4 +55,12 @@ public class AccountServiceImpl implements AccountService{
 		accountRepository.delete(account);
 		
 	}
+	
+	public boolean findOneUser(String username, String password) throws DataAccessException {
+		boolean result=false;
+		if(accountRepository.findOneUserInt(username, password)==1) result=true;
+		return result;
+	}
+	
+	
 }

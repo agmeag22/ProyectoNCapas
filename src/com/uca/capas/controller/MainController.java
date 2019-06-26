@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.uca.capas.domain.User;
 
 import com.uca.capas.repositories.UserRepository;
-
+import com.uca.capas.service.AccountService;
 import com.uca.capas.service.UserService;
 
 import java.util.logging.Level;
@@ -30,7 +30,7 @@ public class MainController {
 	
 
 	@Autowired
-	private UserService userServ;
+	private AccountService accountServ;
 	
 	@RequestMapping("/")
 	public ModelAndView initMain() {
@@ -43,7 +43,7 @@ public class MainController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ModelAndView login(@RequestParam(value="username") String username,@RequestParam(value="password") String password) {
 		ModelAndView mav = new ModelAndView();
-		if(userServ.findOneUser(username, password)) {
+		if(accountServ.findOneUser(username, password)) {
 			log.info("Entrando a funcion init-min" + log.getName());
 			mav.setViewName("main");
 		}else {
