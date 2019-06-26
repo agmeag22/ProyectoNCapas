@@ -9,8 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -24,7 +26,7 @@ public class Account {
 	@GeneratedValue(generator="account_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(name = "account_seq", sequenceName = "public.account_seq",allocationSize=1)
 	@Column(name = "id_account")
-	private Integer id_account;
+	private Integer idaccount;
 	
 	
 	@Column(name = "username")
@@ -34,10 +36,10 @@ public class Account {
 	private String password;
 	
 	@Column(name = "active_state")
-	private int active_state;
+	private int activestate;
 	
 	@Column(name = "online_status")
-	private int online_status;
+	private int onlinestatus;
 
 	@Column(name = "comment")
 	private String comment;
@@ -45,18 +47,20 @@ public class Account {
 	@Column(name = "credit")
 	private float credit;
 	
-	@Column(name = "id_role")
-	private int id_role;
+	@OneToOne
+	@JoinColumn(name = "id_role", referencedColumnName = "id_role")
+	private Role role;
 	
-	@Column(name = "id_user")
-	private int id_user;
+	@OneToOne
+	@JoinColumn(name = "id_user", referencedColumnName = "id_user")
+	private User user;
 
-	public Integer getId_account() {
-		return id_account;
+	public Integer getIdaccount() {
+		return idaccount;
 	}
 
-	public void setId_account(Integer id_account) {
-		this.id_account = id_account;
+	public void setIdaccount(Integer idaccount) {
+		this.idaccount = idaccount;
 	}
 
 	public String getUsername() {
@@ -75,20 +79,20 @@ public class Account {
 		this.password = password;
 	}
 
-	public int getActive_state() {
-		return active_state;
+	public int getActivestate() {
+		return activestate;
 	}
 
-	public void setActive_state(int active_state) {
-		this.active_state = active_state;
+	public void setActivestate(int activestate) {
+		this.activestate = activestate;
 	}
 
-	public int getOnline_status() {
-		return online_status;
+	public int getOnlinestatus() {
+		return onlinestatus;
 	}
 
-	public void setOnline_status(int online_status) {
-		this.online_status = online_status;
+	public void setOnlinestatus(int onlinestatus) {
+		this.onlinestatus = onlinestatus;
 	}
 
 	public String getComment() {
@@ -107,43 +111,44 @@ public class Account {
 		this.credit = credit;
 	}
 
-	public int getId_role() {
-		return id_role;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setId_role(int id_role) {
-		this.id_role = id_role;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
-	public int getId_user() {
-		return id_user;
+	public User getUser() {
+		return user;
 	}
 
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Account(Integer id_account, String username, String password, int active_state, int online_status,
-			String comment, float credit, int id_role, int id_user) {
+	public Account(Integer idaccount, String username, String password, int activestate, int onlinestatus,
+			String comment, float credit, Role role, User user) {
 		super();
-		this.id_account = id_account;
+		this.idaccount = idaccount;
 		this.username = username;
 		this.password = password;
-		this.active_state = active_state;
-		this.online_status = online_status;
+		this.activestate = activestate;
+		this.onlinestatus = onlinestatus;
 		this.comment = comment;
 		this.credit = credit;
-		this.id_role = id_role;
-		this.id_user = id_user;
+		this.role = role;
+		this.user = user;
 	}
 
 	public Account() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
-	
-	
+
+
 	
 	
 }

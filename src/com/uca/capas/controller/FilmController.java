@@ -16,12 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Film;
+import com.uca.capas.repositories.FilmRepository;
 import com.uca.capas.service.FilmService;
 import com.uca.capas.service.UserService;
 @Controller
 public class FilmController {
 	@Autowired
 	private FilmService filmService;
+	
+	@Autowired
+	private FilmRepository filmRepo;
+	
 	@RequestMapping("film/vertodos")
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
@@ -47,7 +52,10 @@ public class FilmController {
 //			}
 //	
 			//Page = objeto de spring data que representa la pagina
-			List<Film> films = filmService.findAll(PageRequest.of(pagina, 10, new Sort(Direction.ASC, "id_film")));
+			List<Film> films = null;
+			
+			films = filmService.findAll(PageRequest.of(pagina, 10, new Sort(Direction.ASC, "idfilm")));
+			//films=(List<Film>) filmRepo.findAll();
 			
 			//Como Page no es una coleccion en si, utilizo el metodo getContent() el cual me devuelve la coleccion (de clientes) que representa la pagina
 			mav.addObject("films", films);

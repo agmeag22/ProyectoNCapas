@@ -32,6 +32,7 @@ public class FilmServiceImpl implements FilmService{
 		return filmRepository.findAll(page).getContent();
 	}
 	
+		
 	public long countAll() {
 		// TODO Auto-generated method stub
 		return filmRepository.count();
