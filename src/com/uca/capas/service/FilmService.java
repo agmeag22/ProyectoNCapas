@@ -2,15 +2,13 @@ package com.uca.capas.service;
 
 import java.util.List;
 
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-
 import com.uca.capas.domain.Film;
-import com.uca.capas.domain.User;
 
 public interface FilmService {
-	public List<Film> findAll(Pageable page);
+	public List<Film> findAll(int page);
+	public Film findOne(Integer code);
 	public long countAll();
 	public void save(Film film);
+	public void delete(Film film);
+	
 }

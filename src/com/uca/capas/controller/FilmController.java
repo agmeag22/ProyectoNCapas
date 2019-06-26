@@ -54,9 +54,8 @@ public class FilmController {
 			//Page = objeto de spring data que representa la pagina
 			List<Film> films = null;
 			
-			films = filmService.findAll(PageRequest.of(pagina, 10, new Sort(Direction.ASC, "idfilm")));
+			films = filmService.findAll(pagina);
 			//films=(List<Film>) filmRepo.findAll();
-			
 			//Como Page no es una coleccion en si, utilizo el metodo getContent() el cual me devuelve la coleccion (de clientes) que representa la pagina
 			mav.addObject("films", films);
 			mav.addObject("actual", (pagina + 1) * 10);

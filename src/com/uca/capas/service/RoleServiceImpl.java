@@ -16,46 +16,43 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.uca.capas.domain.Transaction;
+import com.uca.capas.domain.Role;
 import com.uca.capas.domain.User;
-import com.uca.capas.repositories.AccountRepository;
-import com.uca.capas.repositories.TransactionRepository;
-import com.uca.capas.repositories.TransactionRepository;;
+import com.uca.capas.repositories.RoleRepository;
+import com.uca.capas.repositories.RoleRepository;;
 
 @Service
-public class TransactionServiceImpl implements TransactionService{
+public class RoleServiceImpl implements RoleService{
 
 	@Autowired
-	TransactionRepository transactionRepository ;
+	RoleRepository roleRepository ;
 	
 	
 
-	public List<Transaction> findAll(int page) {
+	public List<Role> findAll(int page) {
 		// TODO Auto-generated method stub
-		return transactionRepository.findAll(PageRequest.of(page, 10, new Sort(Direction.ASC, "idtransaction"))).getContent();
+		return roleRepository.findAll(PageRequest.of(page, 10, new Sort(Direction.ASC, "idrole"))).getContent();
 	}
 	
-	public Transaction findOne(Integer transaction) {
+	public Role findOne(Integer role) {
 		// TODO Auto-generated method stub
-		return transactionRepository.findById(transaction).get();
+		return roleRepository.findById(role).get();
 	}
 		
 	public long countAll() {
 		// TODO Auto-generated method stub
-		return transactionRepository.count();
+		return roleRepository.count();
 	}
 
 	
-	public void save(Transaction transaction) {
-		transactionRepository.save(transaction);
+	public void save(Role role) {
+		roleRepository.save(role);
 	}
 
 
 	@Override
-	public void delete(Transaction transaction) {
-		transactionRepository.delete(transaction);
+	public void delete(Role role) {
+		roleRepository.delete(role);
 		
 	}
-
-	
 }
