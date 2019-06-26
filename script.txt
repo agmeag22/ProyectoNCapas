@@ -1,0 +1,185 @@
+-- Table: public.table_account
+
+-- DROP TABLE public.table_account;
+
+CREATE TABLE public.table_account
+(
+    id_account integer NOT NULL DEFAULT nextval('account_seq'::regclass),
+    username character varying(32) COLLATE pg_catalog."default",
+    password character varying(32) COLLATE pg_catalog."default",
+    active_state integer,
+    online_status integer,
+    comment character varying(255) COLLATE pg_catalog."default",
+    credit numeric,
+    id_role integer,
+    id_user integer,
+    CONSTRAINT table_account_pkey PRIMARY KEY (id_account),
+    CONSTRAINT id_role FOREIGN KEY (id_role)
+        REFERENCES public.table_role (id_role) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT id_user FOREIGN KEY (id_user)
+        REFERENCES public.table_user (id_user) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.table_account
+    OWNER to postgres;
+	
+	
+-- Table: public.table_film
+
+-- DROP TABLE public.table_film;
+
+CREATE TABLE public.table_film
+(
+    id_film integer NOT NULL DEFAULT nextval('film_seq'::regclass),
+    film_name character varying(32) COLLATE pg_catalog."default",
+    description character varying(255) COLLATE pg_catalog."default",
+    duration character varying(32) COLLATE pg_catalog."default",
+    url_poster character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT table_film_pkey PRIMARY KEY (id_film)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.table_film
+    OWNER to postgres;
+	
+	-- Table: public.table_function
+
+-- DROP TABLE public.table_function;
+
+CREATE TABLE public.table_function
+(
+    id_function integer NOT NULL DEFAULT nextval('function_seq'::regclass),
+    start_time character varying(32) COLLATE pg_catalog."default",
+    active_state integer,
+    availability integer,
+    creation_date character varying(32) COLLATE pg_catalog."default",
+    creation_user character varying(32) COLLATE pg_catalog."default",
+    mod_date character varying(32) COLLATE pg_catalog."default",
+    mod_user character varying(32) COLLATE pg_catalog."default",
+    id_type integer,
+    id_film integer,
+    CONSTRAINT table_function_pkey PRIMARY KEY (id_function),
+    CONSTRAINT id_film FOREIGN KEY (id_film)
+        REFERENCES public.table_film (id_film) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT id_type FOREIGN KEY (id_type)
+        REFERENCES public.table_ticket_type (id_type) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.table_function
+    OWNER to postgres;
+	
+	
+	-- Table: public.table_role
+
+-- DROP TABLE public.table_role;
+
+CREATE TABLE public.table_role
+(
+    id_role integer NOT NULL,
+    role character varying(15) COLLATE pg_catalog."default",
+    CONSTRAINT table_role_pkey PRIMARY KEY (id_role)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.table_role
+    OWNER to postgres;
+	
+	
+	
+	-- Table: public.table_ticket_type
+
+-- DROP TABLE public.table_ticket_type;
+
+CREATE TABLE public.table_ticket_type
+(
+    id_type integer NOT NULL,
+    type character varying(20) COLLATE pg_catalog."default",
+    ticket_cost numeric,
+    CONSTRAINT table_ticket_type_pkey PRIMARY KEY (id_type)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.table_ticket_type
+    OWNER to postgres;
+	
+	
+	
+	-- Table: public.table_transaction
+
+-- DROP TABLE public.table_transaction;
+
+CREATE TABLE public.table_transaction
+(
+    id_transaction integer NOT NULL DEFAULT nextval('transaction_seq'::regclass),
+    id_account integer,
+    id_function integer,
+    transaction_date_hour character varying(32) COLLATE pg_catalog."default",
+    ticket_quantity integer,
+    total numeric,
+    CONSTRAINT table_transaction_pkey PRIMARY KEY (id_transaction),
+    CONSTRAINT id_account FOREIGN KEY (id_account)
+        REFERENCES public.table_account (id_account) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT id_function FOREIGN KEY (id_function)
+        REFERENCES public.table_function (id_function) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.table_transaction
+    OWNER to postgres;
+	
+	
+	
+	-- Table: public.table_user
+
+-- DROP TABLE public.table_user;
+
+CREATE TABLE public.table_user
+(
+    id_user integer NOT NULL DEFAULT nextval('user_seq'::regclass),
+    u_name character varying(32) COLLATE pg_catalog."default",
+    u_lastname character varying(32) COLLATE pg_catalog."default",
+    u_birthdate character varying(32) COLLATE pg_catalog."default",
+    u_country character varying(20) COLLATE pg_catalog."default",
+    u_municipality character varying(20) COLLATE pg_catalog."default",
+    u_address character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT table_user_pkey PRIMARY KEY (id_user)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.table_user
+    OWNER to postgres;
