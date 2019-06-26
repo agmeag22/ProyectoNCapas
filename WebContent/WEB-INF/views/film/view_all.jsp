@@ -13,8 +13,10 @@
 <body>
 <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
 <h1>Listado Peliculas</h1>
+<div class="btn-group" role="group" >
 <a class="btn btn-secondary" href=" ${pageContext.request.contextPath}/film/new	">Crear Pelicula	</a>
-<a class="btn btn-secondary" href=" ${pageContext.request.contextPath}/function/list">Listado Funciones</a>
+<a class="btn btn-dark" href=" ${pageContext.request.contextPath}/function/list">Listado Funciones</a>
+</div>
 <br/>
 	<table class="table">
 	<thead>
@@ -23,16 +25,15 @@
 	    <th scope="col">Codigo</th>
 	    <th scope="col">Nombre</th>
 	    <th scope="col">Descripcion</th>
-	    <th scope="col">Duracion</th>
 	  </tr>
 	</thead>
 	<tbody>
 		<c:forEach items="${films}" var="film">
 			<tr>
 				<td>
-					<div class="btn-group">
-					  <a href="${pageContext.request.contextPath}/film/view/${film.idfilm}" class="btn btn-primary">Ver</a>
-					  <a href="${pageContext.request.contextPath}/film/edit/${film.idfilm}" type="button" class="btn btn-secondary">Editar</a>
+					<div class="btn-group" role="group">
+					  <a href="${pageContext.request.contextPath}/film/view/${film.idfilm}" class="btn btn-dark">Ver</a>
+					  <a href="${pageContext.request.contextPath}/film/edit/${film.idfilm}" class="btn btn-secondary">Editar</a>
 					</div>
 				</td>
 			<td>${film.idfilm}</td>

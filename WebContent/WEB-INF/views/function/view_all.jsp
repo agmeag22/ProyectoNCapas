@@ -12,9 +12,11 @@
 <body>
 <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
 <h1>Listado Funciones</h1>
+<div class="btn-group" role="group" >
 <a class="btn btn-secondary" href=" ${pageContext.request.contextPath}/function/new	">Crear Funcion</a>
-<a class="btn btn-secondary" href=" ${pageContext.request.contextPath}/film/new	">Crear Pelicula</a>
-<a class="btn btn-secondary" href=" ${pageContext.request.contextPath}/film/list">Listado Peliculas</a>
+<a class="btn btn-light" href=" ${pageContext.request.contextPath}/film/new	">Crear Pelicula</a>
+<a class="btn btn-dark" href=" ${pageContext.request.contextPath}/film/list">Listado Peliculas</a>
+</div>
 	<table class="table">
 	<thead>
 	  <tr>
@@ -31,8 +33,8 @@
 			<tr>
 				<td>
 					<div class="btn-group">
-					  <a href="${pageContext.request.contextPath}/function/view/${function.idfunction}" class="btn btn-primary">Ver</a>
-					  <a href="${pageContext.request.contextPath}/function/edit/${function.idfunction}" type="button" class="btn btn-secondary">Editar</a>
+					  <a href="${pageContext.request.contextPath}/function/view/${function.idfunction}" class="btn btn-dark">Ver</a>
+					  <a href="${pageContext.request.contextPath}/function/edit/${function.idfunction}"  class="btn btn-secondary">Editar</a>
 					</div>
 				</td>
 			<td>${function.idfunction}</td>
