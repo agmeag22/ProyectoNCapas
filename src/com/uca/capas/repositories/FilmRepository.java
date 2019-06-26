@@ -15,7 +15,7 @@ import org.springframework.data.repository.query.Param;
 import com.uca.capas.domain.Film;
 import com.uca.capas.domain.User;
 
-public interface FilmRepository extends PagingAndSortingRepository<Film, Integer>{
+public interface FilmRepository extends PagingAndSortingRepository<Film, Short>{
 	
 	
 	public Page<Film> findAll(Pageable page);

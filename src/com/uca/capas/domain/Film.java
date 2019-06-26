@@ -24,7 +24,7 @@ public class Film {
 	@GeneratedValue(generator="film_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(name = "film_seq", sequenceName = "public.film_seq",allocationSize=1)
 	@Column(name = "id_film")
-	private Integer id_film;
+	private Integer idfilm;
 	
 	@Column(name = "film_name")
 	private String film_name;
@@ -38,12 +38,12 @@ public class Film {
 	@Column(name = "url_poster")
 	private String url_poster;
 
-	public Integer getId_film() {
-		return id_film;
+	public Integer getIdfilm() {
+		return idfilm;
 	}
 
-	public void setId_film(Integer id_film) {
-		this.id_film = id_film;
+	public void setIdfilm(Integer idfilm) {
+		this.idfilm = idfilm;
 	}
 
 	public String getFilm_name() {
@@ -78,19 +78,19 @@ public class Film {
 		this.url_poster = url_poster;
 	}
 
-	public Film(Integer id_film, String film_name, String description, String duration, String url_poster) {
+	public Film() {
 		super();
-		this.id_film = id_film;
+		// TODO Auto-generated constructor stub
+	}
+
+	public Film(Integer idfilm, String film_name, String description, String duration, String url_poster) {
+		super();
+		this.idfilm = idfilm;
 		this.film_name = film_name;
 		this.description = description;
 		this.duration = duration;
 		this.url_poster = url_poster;
 	}
 
-	public Film() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	
 }

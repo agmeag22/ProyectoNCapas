@@ -22,20 +22,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Ticket_type {
 	@Id
 	@Column(name = "id_type")
-	private Integer id_type;
+	private Integer idtype;
 	
 	@Column(name = "type")
 	private String type;
 	
 	@Column(name = "ticket_cost")
-	private float ticket_cost;
+	private float ticketcost;
 
-	public Integer getId_type() {
-		return id_type;
+	public Integer getIdtype() {
+		return idtype;
 	}
 
-	public void setId_type(Integer id_type) {
-		this.id_type = id_type;
+	public void setIdtype(Integer idtype) {
+		this.idtype = idtype;
 	}
 
 	public String getType() {
@@ -46,19 +46,19 @@ public class Ticket_type {
 		this.type = type;
 	}
 
-	public float getTicket_cost() {
-		return ticket_cost;
+	public float getTicketcost() {
+		return ticketcost;
 	}
 
-	public void setTicket_cost(float ticket_cost) {
-		this.ticket_cost = ticket_cost;
+	public void setTicketcost(float ticketcost) {
+		this.ticketcost = ticketcost;
 	}
 
-	public Ticket_type(Integer id_type, String type, float ticket_cost) {
+	public Ticket_type(Integer idtype, String type, float ticketcost) {
 		super();
-		this.id_type = id_type;
+		this.idtype = idtype;
 		this.type = type;
-		this.ticket_cost = ticket_cost;
+		this.ticketcost = ticketcost;
 	}
 
 	public Ticket_type() {
@@ -66,6 +66,7 @@ public class Ticket_type {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	
 	
 }

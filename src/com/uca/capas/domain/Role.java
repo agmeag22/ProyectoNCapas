@@ -9,8 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -22,17 +24,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Role {
 	@Id
 	@Column(name = "id_role")
-	private Integer id_role;
+	private Integer idrole;
 	
 	@Column(name = "role")
 	private Integer role;
 
-	public Integer getId_role() {
-		return id_role;
+	public Integer getIdrole() {
+		return idrole;
 	}
 
-	public void setId_role(Integer id_role) {
-		this.id_role = id_role;
+	public void setIdrole(Integer idrole) {
+		this.idrole = idrole;
 	}
 
 	public Integer getRole() {
@@ -43,9 +45,9 @@ public class Role {
 		this.role = role;
 	}
 
-	public Role(Integer id_role, Integer role) {
+	public Role(Integer idrole, Integer role) {
 		super();
-		this.id_role = id_role;
+		this.idrole = idrole;
 		this.role = role;
 	}
 
@@ -53,6 +55,5 @@ public class Role {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 }
