@@ -16,18 +16,21 @@
 	    <th scope="col">Accion</th>
 	    <th scope="col">Codigo</th>
 	    <th scope="col">Descripcion</th>
+	    <th scope="col">Horario</th>
 	    <th scope="col">Estado</th>
 	  </tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${function}" var="funtions">
+		<c:forEach items="${functions}" var="function">
 			<tr>
 				<td>
 					
 				</td>
 			<td>${function.film.idfilm}</td>
 			<td>${function.film.description}</td>
+			<td>${function.starttime }</td>
 			<td>${function.activestate }</td>
+			
 			</tr>	
 		</c:forEach>
 	</tbody>

@@ -47,7 +47,7 @@ public class Account {
 	@Column(name = "credit")
 	private float credit;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_role", referencedColumnName = "id_role")
 	private Role role;
 	

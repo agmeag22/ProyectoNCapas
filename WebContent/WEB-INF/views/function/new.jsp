@@ -8,15 +8,26 @@
 <meta charset="ISO-8859-1">
 <title>Crear Funcion</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style type="text/css">
+	.wraper{
+		display:flex;
+		align-content: center;
+		justify-content: center;
+	}
+	.button{
+		margin:20px;
+	}
+
+</style>
 </head>
 <body>
 
-<form>
-  <div class="form-group">
+  <div class="form-group col-md-4 container">
+<form action="${pageContext.request.contextPath}/function/store" modelAttribute="function" method="post">
     <label for="inputName">Hora de inicio</label>
     <input type="text" class="form-control" id="inputName" name="starttime" aria-describedby="nameHelp" placeholder="Enter email">
     <small id="nameHelp" class="form-text text-muted">Ingresa el nombre de la pelicula.</small>
-  </div>
+  
   
   <div class="form-check">
     <input type="checkbox" class="form-check-input"  name="activestate" id="activestateCheck">
@@ -48,5 +59,6 @@
    
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
 </body>
 </html>
