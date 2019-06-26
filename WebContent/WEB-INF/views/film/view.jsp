@@ -13,7 +13,7 @@
 
 <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
 <h1>Ver Pelicula</h1>
-<button class="btn btn-secondary">Crear Pelicula</button>
+
 
    <div class="form-group">
     <label for="inputName">Nombre</label>
