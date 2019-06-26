@@ -28,6 +28,7 @@
 			<td>${film.id_film}</td>
 			<td>${film.description}</td>
 			<td>film.store_location</td>
+			
 			</tr>	
 		</c:forEach>
 	</tbody>
