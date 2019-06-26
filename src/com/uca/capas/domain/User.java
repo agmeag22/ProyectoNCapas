@@ -27,22 +27,22 @@ public class User {
 	private Integer iduser;
 	
 	@Column(name = "u_name")
-	private String u_name;
+	private String uname;
 		
 	@Column(name = "u_lastname")
-	private String u_lastname;
+	private String ulastname;
 	
 	@Column(name = "u_birthdate")
-	private String u_birthdate;
+	private String ubirthdate;
 	
 	@Column(name = "u_country")
-	private String u_country;
+	private String ucountry;
 	
 	@Column(name = "u_municipality")
-	private String u_municipality;
+	private String umunicipality;
 	
 	@Column(name = "u_address")
-	private String u_adress;
+	private String uadress;
 
 	public Integer getIduser() {
 		return iduser;
@@ -52,64 +52,64 @@ public class User {
 		this.iduser = iduser;
 	}
 
-	public String getU_name() {
-		return u_name;
+	public String getUname() {
+		return uname;
 	}
 
-	public void setU_name(String u_name) {
-		this.u_name = u_name;
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 
-	public String getU_lastname() {
-		return u_lastname;
+	public String getUlastname() {
+		return ulastname;
 	}
 
-	public void setU_lastname(String u_lastname) {
-		this.u_lastname = u_lastname;
+	public void setUlastname(String ulastname) {
+		this.ulastname = ulastname;
 	}
 
-	public String getU_birthdate() {
-		return u_birthdate;
+	public String getUbirthdate() {
+		return ubirthdate;
 	}
 
-	public void setU_birthdate(String u_birthdate) {
-		this.u_birthdate = u_birthdate;
+	public void setUbirthdate(String ubirthdate) {
+		this.ubirthdate = ubirthdate;
 	}
 
-	public String getU_country() {
-		return u_country;
+	public String getUcountry() {
+		return ucountry;
 	}
 
-	public void setU_country(String u_country) {
-		this.u_country = u_country;
+	public void setUcountry(String ucountry) {
+		this.ucountry = ucountry;
 	}
 
-	public String getU_municipality() {
-		return u_municipality;
+	public String getUmunicipality() {
+		return umunicipality;
 	}
 
-	public void setU_municipality(String u_municipality) {
-		this.u_municipality = u_municipality;
+	public void setUmunicipality(String umunicipality) {
+		this.umunicipality = umunicipality;
 	}
 
-	public String getU_adress() {
-		return u_adress;
+	public String getUadress() {
+		return uadress;
 	}
 
-	public void setU_adress(String u_adress) {
-		this.u_adress = u_adress;
+	public void setUadress(String uadress) {
+		this.uadress = uadress;
 	}
 
-	public User(Integer iduser, String u_name, String u_lastname, String u_birthdate, String u_country,
-			String u_municipality, String u_adress) {
+	public User(Integer iduser, String uname, String ulastname, String ubirthdate, String ucountry,
+			String umunicipality, String uadress) {
 		super();
 		this.iduser = iduser;
-		this.u_name = u_name;
-		this.u_lastname = u_lastname;
-		this.u_birthdate = u_birthdate;
-		this.u_country = u_country;
-		this.u_municipality = u_municipality;
-		this.u_adress = u_adress;
+		this.uname = uname;
+		this.ulastname = ulastname;
+		this.ubirthdate = ubirthdate;
+		this.ucountry = ucountry;
+		this.umunicipality = umunicipality;
+		this.uadress = uadress;
 	}
 
 	public User() {
@@ -117,7 +117,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-
+	
 	
 
 
