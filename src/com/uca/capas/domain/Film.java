@@ -27,7 +27,7 @@ public class Film {
 	private Integer idfilm;
 	
 	@Column(name = "film_name")
-	private String film_name;
+	private String filmname;
 	
 	@Column(name = "description")
 	private String description;
@@ -36,7 +36,7 @@ public class Film {
 	private String duration;
 	
 	@Column(name = "url_poster")
-	private String url_poster;
+	private String urlposter;
 
 	public Integer getIdfilm() {
 		return idfilm;
@@ -47,11 +47,11 @@ public class Film {
 	}
 
 	public String getFilm_name() {
-		return film_name;
+		return filmname;
 	}
 
 	public void setFilm_name(String film_name) {
-		this.film_name = film_name;
+		this.filmname = film_name;
 	}
 
 	public String getDescription() {
@@ -71,11 +71,11 @@ public class Film {
 	}
 
 	public String getUrl_poster() {
-		return url_poster;
+		return urlposter;
 	}
 
 	public void setUrl_poster(String url_poster) {
-		this.url_poster = url_poster;
+		this.urlposter = url_poster;
 	}
 
 	public Film() {
