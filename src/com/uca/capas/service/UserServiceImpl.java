@@ -23,31 +23,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	
-	public boolean findOneUser(String username, String password) throws DataAccessException {
-			boolean result=false;
-			if(userRepository.findOneUser(username, password)==1) result=true;
-			return result;
-	}
-	
-	
-	public List<User> findBySucursal(int code) throws DataAccessException {
-			return userRepository.findBySucursal(code);
-	}
-
-
-	public User findOne(Integer sucursal) {
-		// TODO Auto-generated method stub
-		return userRepository.findById(sucursal).get();
-	}
-
-	
-	public void deleteUser(User user) {
-		userRepository.delete(user);
-		
-	}
-
-
 	@Override
 	public void delete(User user) {
 		userRepository.delete(user);
@@ -59,6 +34,18 @@ public class UserServiceImpl implements UserService {
 	public void save(User user) {
 		userRepository.save(user);
 		
+	}
+
+	public boolean findOneUser(String username, String password) throws DataAccessException {
+		boolean result=false;
+		if(userRepository.findOneUser(username, password)==1) result=true;
+		return result;
+}
+
+	
+	public User findOne(Integer sucursal) {
+		// TODO Auto-generated method stub
+		return userRepository.findById(sucursal).get();
 	}
 
 
