@@ -46,12 +46,13 @@ public class Film {
 		this.idfilm = idfilm;
 	}
 
-	public String getFilm_name() {
+	public String getFilmname() {
 		return filmname;
 	}
 
-	public void setFilm_name(String film_name) {
-		this.filmname = film_name;
+	public void setFilmname(String filmname) {
+		this.filmname = filmname;
+
 	}
 
 	public String getDescription() {
@@ -70,12 +71,21 @@ public class Film {
 		this.duration = duration;
 	}
 
-	public String getUrl_poster() {
+	public String getUrlposter() {
 		return urlposter;
 	}
 
-	public void setUrl_poster(String url_poster) {
-		this.urlposter = url_poster;
+	public void setUrlposter(String urlposter) {
+		this.urlposter = urlposter;
+	}
+
+	public Film(Integer idfilm, String filmname, String description, String duration, String urlposter) {
+		super();
+		this.idfilm = idfilm;
+		this.filmname = filmname;
+		this.description = description;
+		this.duration = duration;
+		this.urlposter = urlposter;
 	}
 
 	public Film() {
@@ -83,14 +93,7 @@ public class Film {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Film(Integer idfilm, String film_name, String description, String duration, String url_poster) {
-		super();
-		this.idfilm = idfilm;
-		this.film_name = film_name;
-		this.description = description;
-		this.duration = duration;
-		this.url_poster = url_poster;
-	}
+	
 
 	
 }

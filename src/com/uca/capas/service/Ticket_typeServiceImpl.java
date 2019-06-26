@@ -16,46 +16,43 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.uca.capas.domain.Transaction;
+import com.uca.capas.domain.Ticket_type;
 import com.uca.capas.domain.User;
-import com.uca.capas.repositories.AccountRepository;
-import com.uca.capas.repositories.TransactionRepository;
-import com.uca.capas.repositories.TransactionRepository;;
+import com.uca.capas.repositories.Ticket_typeRepository;
+import com.uca.capas.repositories.Ticket_typeRepository;;
 
 @Service
-public class TransactionServiceImpl implements TransactionService{
+public class Ticket_typeServiceImpl implements Ticket_typeService{
 
 	@Autowired
-	TransactionRepository transactionRepository ;
+	Ticket_typeRepository ticket_typeRepository ;
 	
 	
 
-	public List<Transaction> findAll(int page) {
+	public List<Ticket_type> findAll(int page) {
 		// TODO Auto-generated method stub
-		return transactionRepository.findAll(PageRequest.of(page, 10, new Sort(Direction.ASC, "idtransaction"))).getContent();
+		return ticket_typeRepository.findAll(PageRequest.of(page, 10, new Sort(Direction.ASC, "idticket_type"))).getContent();
 	}
 	
-	public Transaction findOne(Integer transaction) {
+	public Ticket_type findOne(Integer ticket_type) {
 		// TODO Auto-generated method stub
-		return transactionRepository.findById(transaction).get();
+		return ticket_typeRepository.findById(ticket_type).get();
 	}
 		
 	public long countAll() {
 		// TODO Auto-generated method stub
-		return transactionRepository.count();
+		return ticket_typeRepository.count();
 	}
 
 	
-	public void save(Transaction transaction) {
-		transactionRepository.save(transaction);
+	public void save(Ticket_type ticket_type) {
+		ticket_typeRepository.save(ticket_type);
 	}
 
 
 	@Override
-	public void delete(Transaction transaction) {
-		transactionRepository.delete(transaction);
+	public void delete(Ticket_type ticket_type) {
+		ticket_typeRepository.delete(ticket_type);
 		
 	}
-
-	
 }

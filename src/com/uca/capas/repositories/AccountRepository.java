@@ -12,8 +12,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.uca.capas.domain.Account;
+import com.uca.capas.domain.Film;
 
 public interface AccountRepository extends JpaRepository<Account, Integer>{
 	
-	
+	public Page<Account> findAll(Pageable page);
 }

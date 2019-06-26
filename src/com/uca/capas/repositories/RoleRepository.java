@@ -11,10 +11,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.uca.capas.domain.Film;
 import com.uca.capas.domain.Role;
 import com.uca.capas.domain.User;
 
 public interface RoleRepository extends JpaRepository<Role, Integer>{
 	
-	
+	public Page<Role> findAll(Pageable page);
 }
