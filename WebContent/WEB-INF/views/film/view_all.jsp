@@ -11,14 +11,17 @@
 </head>
 <body>
 <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
-<h1>Crear Pelicula</h1>
+<h1>Ver Todos</h1>
+<button class="btn btn-secondary">Crear Pelicula</button>
+<br/>
 	<table class="table">
 	<thead>
 	  <tr>
 	    <th scope="col">Accion</th>
 	    <th scope="col">Codigo</th>
+	    <th scope="col">Nombre</th>
 	    <th scope="col">Descripcion</th>
-	    <th scope="col">Duracion</th>
+	    <th scope="col">Du	racion</th>
 	  </tr>
 	</thead>
 	<tbody>
@@ -31,6 +34,7 @@
 					</div>
 				</td>
 			<td>${film.idfilm}</td>
+			<td>${film.filmname}</td>
 			<td>${film.description}</td>
 			<td>${film.duration}</td>
 			</tr>	

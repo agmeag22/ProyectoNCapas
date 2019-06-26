@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,9 +79,37 @@ public class FilmController {
 	
 	
 	@RequestMapping(value="film/store",method=RequestMethod.POST)
-	public String store(@ModelAttribute(name="sucursal") Film film ,HttpServletRequest request) throws Exception{
+	public String store(@ModelAttribute(name="film") Film film ,HttpServletRequest request) throws Exception{
 		filmService.save(film);
 		return "redirect:/film/list";	
+	}
+	
+	@RequestMapping(value="film/edit/{id}")
+	public ModelAndView edit(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		Film film=filmService.findOne(id);
+		if(film!=null) {
+		mav.addObject("film", film);
+		mav.setViewName("film/edit");
+		}
+		else {
+			return new ModelAndView("redirect:/film/list");
+		}
+		return mav;	
+	}
+	
+	@RequestMapping(value="film/view/{id}")
+	public ModelAndView view(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		Film film=filmService.findOne(id);
+		if(film!=null) {
+			mav.addObject("film", film);
+			mav.setViewName("film/view");
+			}
+			else {
+				return new ModelAndView("redirect:/film/list");
+			}
+		return mav;	
 	}
 }
 
