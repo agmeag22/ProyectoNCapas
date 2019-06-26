@@ -10,31 +10,40 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-
+<div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
+<h1>Ver Todos</h1>
+<button class="btn btn-secondary">Crear Pelicula</button>
+<br/>
 	<table class="table">
 	<thead>
 	  <tr>
 	    <th scope="col">Accion</th>
 	    <th scope="col">Codigo</th>
+	    <th scope="col">Nombre</th>
 	    <th scope="col">Descripcion</th>
-	    <th scope="col">Estado</th>
+	    <th scope="col">Du	racion</th>
 	  </tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${film}" var="films">
+		<c:forEach items="${films}" var="film">
 			<tr>
 				<td>
-					
+					<div class="btn-group">
+					  <a href="${pageContext.request.contextPath}/film/view/${film.idfilm}" class="btn btn-primary">Ver</a>
+					  <a href="${pageContext.request.contextPath}/film/edit/${film.idfilm}" type="button" class="btn btn-secondary">Editar</a>
+					</div>
 				</td>
-			<td>${film.id_film}</td>
+			<td>${film.idfilm}</td>
+			<td>${film.filmname}</td>
 			<td>${film.description}</td>
-			<td>film.store_location</td>
+			<td>${film.duration}</td>
 			</tr>	
 		</c:forEach>
 	</tbody>
 	 
 	  
 	</table>
+	</div>
 	  
   
   	

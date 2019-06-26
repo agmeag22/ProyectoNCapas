@@ -11,7 +11,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,6 +58,7 @@ public class FilmController {
 			List<Film> films = null;
 			
 			films = filmService.findAll(pagina);
+			System.out.println("El tamañò es:"+films.size());
 			//films=(List<Film>) filmRepo.findAll();
 			//Como Page no es una coleccion en si, utilizo el metodo getContent() el cual me devuelve la coleccion (de clientes) que representa la pagina
 			mav.addObject("films", films);
@@ -71,6 +75,41 @@ public class FilmController {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("film/new");
 			return mav;
+	}
+	
+	
+	@RequestMapping(value="film/store",method=RequestMethod.POST)
+	public String store(@ModelAttribute(name="film") Film film ,HttpServletRequest request) throws Exception{
+		filmService.save(film);
+		return "redirect:/film/list";	
+	}
+	
+	@RequestMapping(value="film/edit/{id}")
+	public ModelAndView edit(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		Film film=filmService.findOne(id);
+		if(film!=null) {
+		mav.addObject("film", film);
+		mav.setViewName("film/edit");
+		}
+		else {
+			return new ModelAndView("redirect:/film/list");
+		}
+		return mav;	
+	}
+	
+	@RequestMapping(value="film/view/{id}")
+	public ModelAndView view(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		Film film=filmService.findOne(id);
+		if(film!=null) {
+			mav.addObject("film", film);
+			mav.setViewName("film/view");
+			}
+			else {
+				return new ModelAndView("redirect:/film/list");
+			}
+		return mav;	
 	}
 }
 
