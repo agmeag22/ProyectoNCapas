@@ -2,6 +2,7 @@ package com.uca.capas.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "public", name = "function")
+@Table(schema = "public", name = "table_function")
 public class Function {
 	@Id
 	@GeneratedValue(generator="function_seq", strategy = GenerationType.AUTO)
@@ -20,21 +21,13 @@ public class Function {
 	private Integer idfunction;
 	
 	
-//	@Column(name = "id_film")
-//	private Integer id_film;
-//	
-	@OneToOne
+
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_film", referencedColumnName = "id_film")
-	//@Column(name = "id_film")
 	private Film film;
-	
-//	@Column(name = "id_type")
-//	private Integer id_type;
-//	
-//	ticket_type
-	@OneToOne
+
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_type", referencedColumnName = "id_type")
-//	@Column(name = "id_type")
 	private Ticket_type tickettype;
 	
 	@Column(name = "start_time")
