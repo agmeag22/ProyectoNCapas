@@ -20,15 +20,14 @@
 	  </tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${film}" var="films">
+		<c:forEach items="${function}" var="funtions">
 			<tr>
 				<td>
 					
 				</td>
-			<td>${film.id_film}</td>
-			<td>${film.description}</td>
-			<td>film.store_location</td>
-			
+			<td>${function.film.idfilm}</td>
+			<td>${function.film.description}</td>
+			<td>${function.activestate }</td>
 			</tr>	
 		</c:forEach>
 	</tbody>
