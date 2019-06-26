@@ -6,9 +6,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-
+import com.uca.capas.domain.Film;
 import com.uca.capas.domain.User;
 
 public interface FilmService {
-
+	public List<Film> findAll(Pageable page);
+	public long countAll();
+	public void save(Film film);
 }
