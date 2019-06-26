@@ -21,13 +21,21 @@
 </style>
 </head>
 <body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){ 
+$("#films").val("${function.film.idfilm}").attr('selected', 'selected'); 
+$("#tickettype").val("${function.tickettype.idtype}").attr('selected', 'selected'); 
+$("#activestateCheck").prop('checked', ${function.activestate}!=0);
+document.getElementById("activestateCheck").disabled = true;
+}); 
+</script> 
 <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
-<h1>Crear Funcion</h1>
-<form action="${pageContext.request.contextPath}/function/store"  method="post">
+<h1>Ver Funcion</h1>
+<input hidden name="idfunction" value="${function.idfunction}"/>
     <label for="inputName">Hora de inicio</label>
-    <input type="time" class="form-control" id="inputName" name="starttime" aria-describedby="nameHelp" required>
-    <small id="nameHelp" class="form-text text-muted">Ingresa la hora de inicio de la funcion.</small>
+    <input type="time" class="form-control" id="inputName" name="starttime" value="${function.starttime}" aria-describedby="nameHelp" readonly >
+    <small id="nameHelp" class="form-text text-muted">Ingresa la hora de inicio.</small>
   
   
  
@@ -35,10 +43,10 @@
   
   <div class="form-group">
       <label  for="films">Pelicula</label>
-    <select id="films" class="form-control" name="film" required>
+    <select id="films" class="form-control" name="film" readonly>
 	  
-	  <c:forEach items="${films}" var="film" >
-	  <option value="${film.idfilm }">${film.filmname}</option>
+	  <c:forEach items="${films}" var="film">
+	  <option value="${film.idfilm}">${film.filmname}</option>
 	  </c:forEach>
 	</select>
 
@@ -46,10 +54,10 @@
   
     <div class="form-group">
      <label  for="tickettype">Tipo de Ticket</label>
-    <select id="tickettype" class="form-control" name="tickettype" required>
+    <select id="tickettype" class="form-control" name="tickettype" readonly >
       
-	  <c:forEach items="${tickettypes}" var="tickettype" >
-	  <option value="${tickettype.idtype }">${tickettype.type}</option>
+	  <c:forEach items="${tickettypes}" var="tickettype">
+	  <option value="${tickettype.idtype}">${tickettype.type}</option>
 	  </c:forEach>
 	</select>
    
@@ -57,13 +65,12 @@
   
    <div class="form-check form-group">
     
-    <input type="checkbox" class="form-check-input"  name="activestate" id="activestateCheck" >
+    <input type="checkbox" class="form-check-input"  name="activestate" id="activestateCheck" readonly>
     <label class="form-check-label" for="activestateCheck">Publicar</label>
    
   </div>
    
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
 </div>
 </body>
 </html>

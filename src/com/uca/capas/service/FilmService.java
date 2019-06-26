@@ -6,6 +6,7 @@ import com.uca.capas.domain.Film;
 
 public interface FilmService {
 	public List<Film> findAll(int page);
+	public List<Film> findAll();
 	public Film findOne(Integer code);
 	public long countAll();
 	public void save(Film film);

@@ -19,4 +19,5 @@ public interface FilmRepository extends PagingAndSortingRepository<Film, Integer
 	
 	
 	public Page<Film> findAll(Pageable page);
+	public List<Film> findAll();
 }
