@@ -19,32 +19,30 @@
 </div>
 <br/>
 	<table class="table">
-	<thead>
-	  <tr>
-	    <th scope="col">Accion</th>
-	    <th scope="col">Codigo</th>
-	    <th scope="col">Nombre</th>
-	    <th scope="col">Descripcion</th>
-	  </tr>
-	</thead>
-	<tbody>
-		<c:forEach items="${films}" var="film">
-			<tr>
-				<td>
-					<div class="btn-group" role="group">
-					  <a href="${pageContext.request.contextPath}/film/view/${film.idfilm}" class="btn btn-dark">Ver</a>
-					  <a href="${pageContext.request.contextPath}/film/edit/${film.idfilm}" class="btn btn-secondary">Editar</a>
-					</div>
-				</td>
-			<td>${film.idfilm}</td>
-			<td>${film.filmname}</td>
-			<td>${film.description}</td>
-			<td>${film.duration}</td>
-			</tr>	
-		</c:forEach>
-	</tbody>
-	 
-	  
+		<thead>
+		  <tr>
+		    <th scope="col">Accion</th>
+		    <th scope="col">Codigo</th>
+		    <th scope="col">Nombre</th>
+		    <th scope="col">Descripcion</th>
+		  </tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${films}" var="film">
+				<tr>
+					<td>
+						<div class="btn-group" role="group">
+						  <a href="${pageContext.request.contextPath}/film/view/${film.idfilm}" class="btn btn-dark">Ver</a>
+						  <a href="${pageContext.request.contextPath}/film/edit/${film.idfilm}" class="btn btn-secondary">Editar</a>
+						</div>
+					</td>
+				<td>${film.idfilm}</td>
+				<td>${film.filmname}</td>
+				<td>${film.description}</td>
+				<td>${film.duration}</td>
+				</tr>	
+			</c:forEach>
+		</tbody>  
 	</table>
 	</div>
 	  
