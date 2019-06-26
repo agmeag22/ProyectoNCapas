@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.uca.capas.domain.Film;
 import com.uca.capas.domain.User;
 import com.uca.capas.repositories.AccountRepository;
 import com.uca.capas.repositories.FilmRepository;;
@@ -26,6 +27,20 @@ public class FilmServiceImpl implements FilmService{
 	
 	
 
+	public List<Film> findAll(Pageable page) {
+		// TODO Auto-generated method stub
+		return filmRepository.findAll(page).getContent();
+	}
+	
+	public long countAll() {
+		// TODO Auto-generated method stub
+		return filmRepository.count();
+	}
+
+	
+	public void save(Film film) {
+		filmRepository.save(film);
+	}
 
 	
 }

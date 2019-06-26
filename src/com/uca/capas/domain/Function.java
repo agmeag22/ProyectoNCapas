@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -23,7 +24,8 @@ public class Function {
 //	private Integer id_film;
 //	
 	@OneToOne
-	@Column(name = "id_film")
+	@JoinColumn(name = "id_film", referencedColumnName = "id_film")
+	//@Column(name = "id_film")
 	private Film film;
 	
 //	@Column(name = "id_type")
@@ -31,8 +33,9 @@ public class Function {
 //	
 //	ticket_type
 	@OneToOne
-	@Column(name = "id_type")
-	private Ticket_Type ticketTipe;
+	@JoinColumn(name = "id_type", referencedColumnName = "id_type")
+//	@Column(name = "id_type")
+	private Ticket_type ticketTipe;
 	
 	@Column(name = "start_time")
 	private String start_time;
