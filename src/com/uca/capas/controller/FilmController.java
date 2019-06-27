@@ -83,7 +83,7 @@ public class FilmController {
 			return new ModelAndView("redirect:/");
 		}
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("film/new");
+			mav.setViewName("admin/film/new");
 			return mav;
 	}
 	
@@ -106,7 +106,7 @@ public class FilmController {
 		Film film=filmService.findOne(id);
 		if(film!=null) {
 		mav.addObject("film", film);
-		mav.setViewName("film/edit");
+		mav.setViewName("admin/film/edit");
 		}
 		else {
 			return new ModelAndView("redirect:/film/list");
@@ -125,7 +125,7 @@ public class FilmController {
 		Film film=filmService.findOne(id);
 		if(film!=null) {
 			mav.addObject("film", film);
-			mav.setViewName("film/view");
+			mav.setViewName("admin/film/view");
 			}
 			else {
 				return new ModelAndView("redirect:/film/list");
