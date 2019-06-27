@@ -32,10 +32,8 @@ public class MainController {
 
 	
 	@Autowired
-	private AccountService accountService;
+	private AccountService accountServ;
 	
-	@Autowired
-	private RoleService roleService;
 
 	@RequestMapping(value="/")
 	public ModelAndView initMain() {
@@ -54,11 +52,11 @@ public class MainController {
 	public ModelAndView login(@RequestParam(value="username") String username,@RequestParam(value="password") String password, HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
 		ModelAndView mav = new ModelAndView();
 		Account account = null;	
-		if(accountService.findOneUser(username, password)) {
-			account=accountService.findOneUserByUsernamePassword(username, password);
+		if(accountServ.findOneUser(username, password)) {
+			account=accountServ.findOneUserByUsernamePassword(username, password);
 			if(account!=null) {
 			account.setOnlinestatus(1);
-			accountService.save(account);
+			accountServ.save(account);
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("user", account.getUsername());
@@ -67,12 +65,12 @@ public class MainController {
 			//setting session to expiry in 30 mins
 			session.setMaxInactiveInterval(30*60);
 			
-			mav.setViewName("redirect:/function/list");
-			/*if(account.getRole().getIdrole()==2) {
+			
+			if(account.getRole().getIdrole()==1) {
 				mav.setViewName("redirect:/dashboard-client");
 			}else {
 				mav.setViewName("redirect:/function/list");
-			}*/
+			}
 			} else {
 				redirectAttributes.addFlashAttribute("error", 0);
 				
@@ -90,9 +88,9 @@ public class MainController {
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpSession session,HttpServletRequest request) {
 		int account_id = (Integer)session.getAttribute("account_id");
-		Account account = accountService.findOne(account_id);
+		Account account = accountServ.findOne(account_id);
 		account.setOnlinestatus(0);
-		accountService.save(account);
+		accountServ.save(account);
 		session.invalidate();
 		return new ModelAndView("redirect:/");
 	}
@@ -103,12 +101,12 @@ public class MainController {
 		Account account = new Account();
 		User user = new User(); 
 		
-		user.setUname(uname);
-		user.setUlastname(ulastname);
-		user.setUcountry(ucountry);
-		user.setUadress(uaddress);
-		user.setUbirthdate(ubirthdate);
-		user.setUmunicipality("");
+		user.setU_name(uname);
+		user.setU_lastname(ulastname);
+		user.setU_country(ucountry);
+		user.setU_adress(uaddress);
+		user.setU_birthdate(ubirthdate);
+		user.setU_municipality("");
 		
 //		userServ.save(user);
 		account.setUser(user);
@@ -117,9 +115,9 @@ public class MainController {
 		account.setActivestate(0);
 		account.setOnlinestatus(0);
 		account.setCredit(20);
-		account.setRole(roleService.findOne(1));
+		account.setRole(roleServ.findOne(1));
 		//userServ.save(user);
-		accountService.save(account);
+		accountServ.save(account);
 		
 		return "redirect:/";
 		
