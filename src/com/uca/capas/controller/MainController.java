@@ -19,6 +19,7 @@ import com.uca.capas.domain.User;
 
 import com.uca.capas.repositories.UserRepository;
 import com.uca.capas.service.AccountService;
+import com.uca.capas.service.RoleService;
 import com.uca.capas.service.UserService;
 
 import java.util.logging.Level;
@@ -40,6 +41,9 @@ public class MainController {
 	@Autowired
 	private UserService userServ;
 	
+	@Autowired
+	private RoleService roleServ;
+	
 	@RequestMapping("/")
 	public ModelAndView initMain() {
 		
@@ -48,7 +52,7 @@ public class MainController {
 		return mav;
 	}
 	
-	@GetMapping("/register")
+	@RequestMapping("/register")
 	public ModelAndView initregister() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("register");
@@ -79,13 +83,20 @@ public class MainController {
 		user.setU_country(ucountry);
 		user.setU_adress(uaddress);
 		user.setU_birthdate(ubirthdate);
+		user.setU_municipality("");
+		
+//		userServ.save(user);
+		account.setUser(user);
 		account.setUsername(username);
 		account.setPassword(password);
-		
-		userServ.save(user);
+		account.setActivestate(0);
+		account.setOnlinestatus(0);
+		account.setCredit(20);
+		account.setRole(roleServ.findOne(1));
+		//userServ.save(user);
 		accountServ.save(account);
 		
-		return "redirect:/film/view";
+		return "redirect:/";
 		
 	}
 
