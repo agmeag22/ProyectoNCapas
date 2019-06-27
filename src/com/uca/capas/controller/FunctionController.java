@@ -41,6 +41,9 @@ public class FunctionController {
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
 				@RequestParam(required = false) Integer page) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
 			ModelAndView mav = new ModelAndView();
 			int pagina=0;
 			if(page!=null) {pagina = page;}
@@ -57,6 +60,9 @@ public class FunctionController {
 	@RequestMapping("function/new")
 	public ModelAndView crear(HttpSession session, 
 			HttpServletRequest request) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
 			ModelAndView mav = new ModelAndView();
 			List<Film> films= filmService.findAll();
 			List<Ticket_type> tickettypes= ticketService.findAll();
@@ -68,7 +74,10 @@ public class FunctionController {
 	
 	
 	 @RequestMapping(value = "function/store")
-	   public String redirect(@RequestParam(required = false) Integer idfunction ,@RequestParam("starttime") String starttime, @RequestParam("film") int film_id,@RequestParam("tickettype") int tickettype,@RequestParam(required = false) String activestate) {
+	   public ModelAndView redirect(HttpSession session,@RequestParam(required = false) Integer idfunction ,@RequestParam("starttime") String starttime, @RequestParam("film") int film_id,@RequestParam("tickettype") int tickettype,@RequestParam(required = false) String activestate) {
+		 if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+				return new ModelAndView("redirect:/");
+			}
 		 Function function;
 		   if(idfunction==null) {
 			 function = new Function();
@@ -90,12 +99,15 @@ public class FunctionController {
 			 function.setStarttime(starttime);
 		   
 		 functionService.save(function);
-	      return "redirect:/function/list";
+	      return new ModelAndView("redirect:/function/list");
 	   }
 	 
 	 @RequestMapping(value="function/edit/{id}")
-		public ModelAndView edit(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
-			ModelAndView mav = new ModelAndView();
+		public ModelAndView edit(HttpSession session,@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+		 if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+				return new ModelAndView("redirect:/");
+			}
+		 ModelAndView mav = new ModelAndView();
 			Function function=functionService.findOne(id);
 			if(function!=null) {
 			mav.addObject("function", function);
@@ -112,7 +124,10 @@ public class FunctionController {
 		}
 		
 		@RequestMapping(value="function/view/{id}")
-		public ModelAndView view(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+		public ModelAndView view(HttpSession session,@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+			if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+				return new ModelAndView("redirect:/");
+			}
 			ModelAndView mav = new ModelAndView();
 			Function function=functionService.findOne(id);
 			if(function!=null) {

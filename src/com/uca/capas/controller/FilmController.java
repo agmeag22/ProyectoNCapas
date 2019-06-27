@@ -34,6 +34,9 @@ public class FilmController {
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
 				@RequestParam(required = false) Integer page ) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
 			ModelAndView mav = new ModelAndView();
 			int pagina=0;
 			System.out.println("La pagina es:"+page);
@@ -76,6 +79,9 @@ public class FilmController {
 	@RequestMapping("film/new")
 	public ModelAndView crear(HttpSession session, 
 			HttpServletRequest request) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("film/new");
 			return mav;
@@ -83,13 +89,19 @@ public class FilmController {
 	
 	
 	@RequestMapping(value="film/store",method=RequestMethod.POST)
-	public String store(@ModelAttribute(name="film") Film film ,HttpServletRequest request) throws Exception{
+	public ModelAndView store(@ModelAttribute(name="film") Film film ,HttpServletRequest request,HttpSession session) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
 		filmService.save(film);
-		return "redirect:/film/list";	
+		return new ModelAndView("redirect:/film/list");	
 	}
 	
 	@RequestMapping(value="film/edit/{id}")
-	public ModelAndView edit(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+	public ModelAndView edit(@PathVariable(value="id") int id ,HttpServletRequest request,HttpSession session) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView mav = new ModelAndView();
 		Film film=filmService.findOne(id);
 		if(film!=null) {
@@ -98,12 +110,17 @@ public class FilmController {
 		}
 		else {
 			return new ModelAndView("redirect:/film/list");
+			
 		}
 		return mav;	
 	}
 	
 	@RequestMapping(value="film/view/{id}")
-	public ModelAndView view(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+	public ModelAndView view(@PathVariable(value="id") int id ,HttpServletRequest request,HttpSession session) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
+		System.out.println("session:"+session.getAttribute("user")+":role:"+session.getAttribute("role"));
 		ModelAndView mav = new ModelAndView();
 		Film film=filmService.findOne(id);
 		if(film!=null) {

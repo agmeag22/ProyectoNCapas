@@ -12,7 +12,18 @@
 <body>
 <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
 <h1>Ver Todos</h1>
-<button class="btn btn-secondary">Crear Pelicula</button>
+<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+		
+			<div class="btn-group align-right" role="group" aria-label="Button group with nested dropdown">
+		  <c:if test = "${pagina > 1}">
+		  <a href=" ${pageContext.request.contextPath}/film/list?page=${pagina-2}" class="btn btn-secondary">Anterior</a>
+		  </c:if>
+		  
+		  <c:if test = "${pagina < total/10}">
+		  <a  href=" ${pageContext.request.contextPath}/film/list?page=${pagina}"class="btn btn-secondary">Siguiente</a>
+		  </c:if>
+		  </div>
+	</div>
 <br/>
 	<table class="table">
 	<thead>
@@ -46,6 +57,8 @@
 	 
 	  
 	</table>
+	<p class="text-right"> Mostrando ${actual}/${total}</p>
+	  
 	</div>
 	  
   
