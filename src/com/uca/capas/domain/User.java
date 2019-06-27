@@ -27,22 +27,22 @@ public class User {
 	private Integer iduser;
 	
 	@Column(name = "u_name")
-	private String u_name;
+	private String uname;
 		
 	@Column(name = "u_lastname")
-	private String u_lastname;
+	private String ulastname;
 	
-	@Column(name = "u_birthdate")
-	private String u_birthdate;
+	@Column(name = "ubirthdate")
+	private String ubirthdate;
 	
-	@Column(name = "u_country")
-	private String u_country;
+	@Column(name = "ucountry")
+	private String ucountry;
 	
 	@Column(name = "u_municipality")
-	private String u_municipality;
+	private String umunicipality;
 	
 	@Column(name = "u_address")
-	private String u_adress;
+	private String uadress;
 
 	public Integer getIduser() {
 		return iduser;
