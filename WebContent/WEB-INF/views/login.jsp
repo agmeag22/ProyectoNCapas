@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
 <title>Login</title>
 <link href="./resources/css/bootstrap.css" media="all" type="text/css" rel="stylesheet">
 <style type="text/css">

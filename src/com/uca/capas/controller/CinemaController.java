@@ -3,6 +3,8 @@ package com.uca.capas.controller;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.servlet.http.HttpSession;
+
 import com.uca.capas.domain.Account;
 import com.uca.capas.domain.Film;
 import com.uca.capas.service.FilmService;
@@ -23,7 +25,10 @@ public class CinemaController {
 	private FilmService filmService;
 	
 @RequestMapping(value = "/dashboard-client" )
-	public ModelAndView dashboard () {
+	public ModelAndView dashboard (HttpSession session) {
+	if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
+		return new ModelAndView("redirect:/");
+	}
 		ModelAndView dashboard = new ModelAndView();
 		
 		List<Film> filmList = this.filmService.findAll(0);
@@ -34,7 +39,10 @@ public class CinemaController {
 	}
 	
 	@RequestMapping(value = "/film-detail/{id}")
-	public ModelAndView filmDetail (@PathVariable(value="id") int id ) {
+	public ModelAndView filmDetail (HttpSession session,@PathVariable(value="id") int id ) {
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView filmDetail = new ModelAndView();
 		
 		Film film = this.filmService.findOne(id);

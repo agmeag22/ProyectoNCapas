@@ -36,16 +36,20 @@ public class AccountController {
 	@RequestMapping("account/list")
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
-				@RequestParam(required = false) Integer direccion) throws Exception{
+				@RequestParam(required = false) Integer page) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
 			ModelAndView mav = new ModelAndView();
 			int pagina=0;
+			if(page!=null) {pagina = page;}
 			
 			List<Account> accounts = null;
 			
 			accounts = accountService.findAll(pagina);
 			System.out.println("El tamañò es:"+accounts.size());
 			mav.addObject("accounts", accounts);
-			mav.addObject("actual", (pagina + 1) * 10);
+			mav.addObject("actual", Math.min((pagina + 1) * 10,accountService.countAll()));
 			mav.addObject("total", accountService.countAll());
 			mav.addObject("pagina", pagina + 1);
 			mav.setViewName("account/view_all");
@@ -54,15 +58,21 @@ public class AccountController {
 	
 	
 	@RequestMapping(value="account/store",method=RequestMethod.POST)
-	public String store(@ModelAttribute(name="account") Account account ,HttpServletRequest request) throws Exception{
+	public ModelAndView store(HttpSession session,@ModelAttribute(name="account") Account account ,HttpServletRequest request) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
 		accountService.save(account);
-		return "redirect:/account/list";	
+		return new ModelAndView("redirect:/account/list");	
 	}
 	
 
 	
 	@RequestMapping(value="account/view/{id}")
-	public ModelAndView view(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+	public ModelAndView view(HttpSession session,@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView mav = new ModelAndView();
 		Account account=accountService.findOne(id);
 		if(account!=null) {
