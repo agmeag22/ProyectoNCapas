@@ -40,8 +40,7 @@ public class MainController {
 	@RequestMapping(value="/")
 	public ModelAndView initMain() {
 	ModelAndView mav = new ModelAndView();
-	mav.setViewName("login");
-    return mav;
+    return mav.setViewName("login");
   }
 	@RequestMapping("/register")
 	public ModelAndView initregister() {
