@@ -2,6 +2,8 @@ package com.uca.capas.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,11 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uca.capas.domain.Account;
+import com.uca.capas.service.RoleService;
 import com.uca.capas.domain.User;
 import com.uca.capas.service.AccountService;
 import com.uca.capas.service.UserService;
 
 import java.util.logging.Logger;
+
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,16 +28,22 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class MainController {
 	static Logger log = Logger.getLogger(MainController.class.getName());
-	
+
+
 	
 	@Autowired
 	private AccountService accountServ;
 	
+
 	@RequestMapping(value="/")
 	public ModelAndView initMain() {
+	ModelAndView mav = new ModelAndView();
+    return mav.setViewName("login");
+  }
+	@RequestMapping("/register")
+	public ModelAndView initregister() {
 		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("login");
+		mav.setViewName("register");
 		return mav;
 	}
 	
@@ -84,6 +95,32 @@ public class MainController {
 	}
 	
 	
-	
+	@RequestMapping("/registrar")
+	public String redirect(@RequestParam("uname") String uname, @RequestParam("ulastname") String ulastname, @RequestParam("ucountry") String ucountry, @RequestParam("uaddress") String uaddress, @RequestParam("ubirthdate") String ubirthdate, @RequestParam("username") String username, @RequestParam("password") String password){
+		Account account = new Account();
+		User user = new User(); 
+		
+		user.setU_name(uname);
+		user.setU_lastname(ulastname);
+		user.setU_country(ucountry);
+		user.setU_adress(uaddress);
+		user.setU_birthdate(ubirthdate);
+		user.setU_municipality("");
+		
+//		userServ.save(user);
+		account.setUser(user);
+		account.setUsername(username);
+		account.setPassword(password);
+		account.setActivestate(0);
+		account.setOnlinestatus(0);
+		account.setCredit(20);
+		account.setRole(roleServ.findOne(1));
+		//userServ.save(user);
+		accountServ.save(account);
+		
+		return "redirect:/";
+		
+	}
+
 	
 }

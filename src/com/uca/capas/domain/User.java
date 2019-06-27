@@ -32,6 +32,7 @@ public class User {
 	@Column(name = "u_lastname")
 	private String ulastname;
 	
+
 	@Column(name = "u_birthdate")
 	private String ubirthdate;
 	
