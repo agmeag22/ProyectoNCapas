@@ -53,7 +53,7 @@ public class FunctionController {
 			mav.addObject("actual", Math.min((pagina + 1) * 10,functionService.countAll()));
 			mav.addObject("total", functionService.countAll());
 			mav.addObject("pagina", pagina + 1);
-			mav.setViewName("function/view_all");
+			mav.setViewName("admin/function/view_all");
 			return mav;
 		}
 	
@@ -68,7 +68,7 @@ public class FunctionController {
 			List<Ticket_type> tickettypes= ticketService.findAll();
 			mav.addObject("films", films);
 			mav.addObject("tickettypes", tickettypes);
-			mav.setViewName("function/new");
+			mav.setViewName("admin/function/new");
 			return mav;
 	}
 	
@@ -115,7 +115,7 @@ public class FunctionController {
 			List<Ticket_type> tickettypes= ticketService.findAll();
 			mav.addObject("films", films);
 			mav.addObject("tickettypes", tickettypes);
-			mav.setViewName("function/edit");
+			mav.setViewName("admin/function/edit");
 			}
 			else {
 				return new ModelAndView("redirect:/function/list");
@@ -137,7 +137,7 @@ public class FunctionController {
 				mav.addObject("films", films);
 				mav.addObject("tickettypes", tickettypes);
 				mav.addObject("function", function);
-				mav.setViewName("function/view");
+				mav.setViewName("admin/function/view");
 				}
 				else {
 					return new ModelAndView("redirect:/function/list");

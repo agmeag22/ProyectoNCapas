@@ -52,7 +52,7 @@ public class AccountController {
 			mav.addObject("actual", Math.min((pagina + 1) * 10,accountService.countAll()));
 			mav.addObject("total", accountService.countAll());
 			mav.addObject("pagina", pagina + 1);
-			mav.setViewName("account/view_all");
+			mav.setViewName("admin/account/view_all");
 			return mav;
 		}
 	
@@ -63,7 +63,7 @@ public class AccountController {
 			return new ModelAndView("redirect:/");
 		}
 		accountService.save(account);
-		return new ModelAndView("redirect:/account/list");	
+		return new ModelAndView("redirect:/admin/account/list");	
 	}
 	
 
@@ -78,10 +78,10 @@ public class AccountController {
 		if(account!=null) {
 			mav.addObject("account", account);
 			System.out.println("El tamañò es:"+account.getUser().getUadress());
-			mav.setViewName("account/view");
+			mav.setViewName("admin/account/view");
 			}
 			else {
-				return new ModelAndView("redirect:/account/list");
+				return new ModelAndView("redirect:/admin/account/list");
 			}
 		return mav;	
 	}
