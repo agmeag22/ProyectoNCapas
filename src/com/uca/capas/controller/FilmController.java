@@ -33,9 +33,11 @@ public class FilmController {
 	@RequestMapping("film/list")
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
-				@RequestParam(required = false) Integer direccion) throws Exception{
+				@RequestParam(required = false) Integer page ) throws Exception{
 			ModelAndView mav = new ModelAndView();
 			int pagina=0;
+			System.out.println("La pagina es:"+page);
+			if(page!=null) {pagina = page;}
 //			String referer = request.getHeader("referer"); //Referer me dice de que URL vengo (quien la llama)
 //			
 //			if(referer.contains("index")) { //Si vengo de index
@@ -62,8 +64,10 @@ public class FilmController {
 			//films=(List<Film>) filmRepo.findAll();
 			//Como Page no es una coleccion en si, utilizo el metodo getContent() el cual me devuelve la coleccion (de clientes) que representa la pagina
 			mav.addObject("films", films);
-			mav.addObject("actual", (pagina + 1) * 10);
+			
+			mav.addObject("actual", Math.min((pagina + 1) * 10,filmService.countAll()));
 			mav.addObject("total", filmService.countAll());
+			
 			mav.addObject("pagina", pagina + 1);
 			mav.setViewName("film/view_all");
 			return mav;
