@@ -34,7 +34,7 @@ public class FilmController {
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
 				@RequestParam(required = false) Integer page ) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 			ModelAndView mav = new ModelAndView();
@@ -80,7 +80,7 @@ public class FilmController {
 	@RequestMapping("film/new")
 	public ModelAndView crear(HttpSession session, 
 			HttpServletRequest request) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 			ModelAndView mav = new ModelAndView();
@@ -91,7 +91,7 @@ public class FilmController {
 	
 	@RequestMapping(value="film/store",method=RequestMethod.POST)
 	public ModelAndView store(@ModelAttribute(name="film") Film film ,HttpServletRequest request,HttpSession session) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 		filmService.save(film);
@@ -100,7 +100,7 @@ public class FilmController {
 	
 	@RequestMapping(value="film/edit/{id}")
 	public ModelAndView edit(@PathVariable(value="id") int id ,HttpServletRequest request,HttpSession session) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 		ModelAndView mav = new ModelAndView();
@@ -118,7 +118,7 @@ public class FilmController {
 	
 	@RequestMapping(value="film/view/{id}")
 	public ModelAndView view(@PathVariable(value="id") int id ,HttpServletRequest request,HttpSession session) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 		System.out.println("session:"+session.getAttribute("user")+":role:"+session.getAttribute("role"));

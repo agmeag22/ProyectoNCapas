@@ -41,7 +41,7 @@ public class FunctionController {
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
 				@RequestParam(required = false) Integer page) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 			ModelAndView mav = new ModelAndView();
@@ -60,7 +60,7 @@ public class FunctionController {
 	@RequestMapping("function/new")
 	public ModelAndView crear(HttpSession session, 
 			HttpServletRequest request) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 			ModelAndView mav = new ModelAndView();
@@ -75,7 +75,7 @@ public class FunctionController {
 	
 	 @RequestMapping(value = "function/store")
 	   public ModelAndView redirect(HttpSession session,@RequestParam(required = false) Integer idfunction ,@RequestParam("starttime") String starttime, @RequestParam("film") int film_id,@RequestParam("tickettype") int tickettype,@RequestParam(required = false) String activestate) {
-		 if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		 if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 				return new ModelAndView("redirect:/");
 			}
 		 Function function;
@@ -104,7 +104,7 @@ public class FunctionController {
 	 
 	 @RequestMapping(value="function/edit/{id}")
 		public ModelAndView edit(HttpSession session,@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
-		 if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		 if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 				return new ModelAndView("redirect:/");
 			}
 		 ModelAndView mav = new ModelAndView();
@@ -125,7 +125,7 @@ public class FunctionController {
 		
 		@RequestMapping(value="function/view/{id}")
 		public ModelAndView view(HttpSession session,@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
-			if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+			if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 				return new ModelAndView("redirect:/");
 			}
 			ModelAndView mav = new ModelAndView();

@@ -37,7 +37,7 @@ public class AccountController {
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
 				@RequestParam(required = false) Integer page) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 			ModelAndView mav = new ModelAndView();
@@ -59,7 +59,7 @@ public class AccountController {
 	
 	@RequestMapping(value="account/store",method=RequestMethod.POST)
 	public ModelAndView store(HttpSession session,@ModelAttribute(name="account") Account account ,HttpServletRequest request) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 		accountService.save(account);
@@ -70,7 +70,7 @@ public class AccountController {
 	
 	@RequestMapping(value="account/view/{id}")
 	public ModelAndView view(HttpSession session,@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=0){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
 			return new ModelAndView("redirect:/");
 		}
 		ModelAndView mav = new ModelAndView();

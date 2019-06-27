@@ -26,7 +26,7 @@ public class CinemaController {
 	
 @RequestMapping(value = "/dashboard-client" )
 	public ModelAndView dashboard (HttpSession session) {
-	if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
+	if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=2){
 		return new ModelAndView("redirect:/");
 	}
 		ModelAndView dashboard = new ModelAndView();
@@ -40,7 +40,7 @@ public class CinemaController {
 	
 	@RequestMapping(value = "/film-detail/{id}")
 	public ModelAndView filmDetail (HttpSession session,@PathVariable(value="id") int id ) {
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=2){
 			return new ModelAndView("redirect:/");
 		}
 		ModelAndView filmDetail = new ModelAndView();
