@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,8 +33,8 @@ public class CinemaController {
 		return dashboard;
 	}
 	
-	@RequestMapping(value = "/film-detail", method = RequestMethod.POST)
-	public ModelAndView filmDetail (@RequestParam("id") int id) {
+	@RequestMapping(value = "/film-detail/{id}")
+	public ModelAndView filmDetail (@PathVariable(value="id") int id ) {
 		ModelAndView filmDetail = new ModelAndView();
 		
 		Film film = this.filmService.findOne(id);

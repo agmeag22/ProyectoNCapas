@@ -37,7 +37,7 @@
 		</style>
 	</head>
 	<body>
-	<form method="POST" action="${pageContext.request.contextPath}/logout" ModelAttribute="account">
+	<form method="POST" action="${pageContext.request.contextPath}/logout" >
 	<input type="submit" class="btn btn-danger" value="Log Out">
 	</form> 
 	
@@ -61,7 +61,7 @@
 								  <div class="card-body">
 								    <p class="card-text">Película: ${film.filmname}</p>
 								    <p class="card-text">Duración: ${film.duration}</p>
-								    <a href="${pageContext.request.contextPath}/film-detail?id=${film.idfilm}" class="btn btn-outline-warning w-100">Ver más.</a>
+								    <a href="${pageContext.request.contextPath}/film-detail/${film.idfilm}" class="btn btn-outline-warning w-100" name="id">Ver más.</a>
 								  </div>
 								</div>
 				    		</div>
