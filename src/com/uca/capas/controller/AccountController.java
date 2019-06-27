@@ -26,7 +26,7 @@ import com.uca.capas.service.AccountService;
 import com.uca.capas.service.FilmService;
 import com.uca.capas.service.UserService;
 @Controller
-public class UserController {
+public class AccountController {
 	
 	@Autowired
 	private UserService userService;

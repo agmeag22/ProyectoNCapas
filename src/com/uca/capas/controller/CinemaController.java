@@ -2,11 +2,14 @@ package com.uca.capas.controller;
 
 import java.util.List;
 import java.util.logging.Logger;
+
+import com.uca.capas.domain.Account;
 import com.uca.capas.domain.Film;
 import com.uca.capas.service.FilmService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +21,7 @@ public class CinemaController {
 	@Autowired
 	private FilmService filmService;
 	
-	@RequestMapping(value = "/dashboard-client", method = RequestMethod.GET)
+@RequestMapping(value = "/dashboard-client" )
 	public ModelAndView dashboard () {
 		ModelAndView dashboard = new ModelAndView();
 		
@@ -29,7 +32,7 @@ public class CinemaController {
 		return dashboard;
 	}
 	
-	@RequestMapping(value = "/film-detail", method = RequestMethod.GET)
+	@RequestMapping(value = "/film-detail", method = RequestMethod.POST)
 	public ModelAndView filmDetail (@RequestParam("id") int id) {
 		ModelAndView filmDetail = new ModelAndView();
 		
