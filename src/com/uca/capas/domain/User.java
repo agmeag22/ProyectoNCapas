@@ -42,7 +42,7 @@ public class User {
 	private String umunicipality;
 	
 	@Column(name = "u_address")
-	private String uadress;
+	private String uaddress;
 
 	public Integer getIduser() {
 		return iduser;
