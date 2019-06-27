@@ -16,6 +16,8 @@ public interface AccountRepository extends JpaRepository<Account, Integer>{
 	
 	public Page<Account> findAll(Pageable page);
 	
-	@Query(nativeQuery=true, value="select count(*) from public.table_account where username= :username and password= :password")
+	@Query(nativeQuery=true, value="select id_account from public.table_account where username= :username and password= :password")
 	public int findOneUserInt(@Param("username")String username,@Param("password") String password) throws DataAccessException ;
+	
+	
 }
