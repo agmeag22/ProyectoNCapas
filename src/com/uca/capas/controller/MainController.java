@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Account;
-import com.uca.capas.domain.Sucursal;
+
 import com.uca.capas.domain.User;
 
 import com.uca.capas.repositories.UserRepository;
@@ -32,7 +33,8 @@ public class MainController {
 	static Logger log = Logger.getLogger(MainController.class.getName());
 	
 
-	
+	@Autowired
+	private AccountService accountServ;
 	
 
 	@Autowired
@@ -42,9 +44,17 @@ public class MainController {
 	public ModelAndView initMain() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("login");
+		mav.setViewName("register");
 		return mav;
 	}
+	
+	@GetMapping("/register")
+	public ModelAndView initregister() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("register");
+		return mav;
+	}
+	
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ModelAndView login(@RequestParam(value="username") String username,@RequestParam(value="password") String password) {
@@ -59,7 +69,7 @@ public class MainController {
 		return mav; 
 	}
 	
-	@RequestMapping("/register")
+	@RequestMapping("/registrar")
 	public String redirect(@RequestParam("uname") String uname, @RequestParam("ulastname") String ulastname, @RequestParam("ucountry") String ucountry, @RequestParam("uaddress") String uaddress, @RequestParam("ubirthdate") String ubirthdate, @RequestParam("username") String username, @RequestParam("password") String password){
 		Account account = new Account();
 		User user = new User(); 
@@ -72,8 +82,8 @@ public class MainController {
 		account.setUsername(username);
 		account.setPassword(password);
 		
-		UserService.save(user);
-		AccountService.save(account); 
+		userServ.save(user);
+		accountServ.save(account);
 		
 		return "redirect:/film/view";
 		

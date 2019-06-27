@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/register" method = "post">
+<form action="${pageContext.request.contextPath}/registrar" method = "post">
 		<input type="text" id="name" class="form-control t" name="uname" placeholder="Name">
 		<input type="text" id="lastname" class="form-control t" name="ulastname" placeholder="Last_name">
 		
