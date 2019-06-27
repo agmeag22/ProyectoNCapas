@@ -41,6 +41,7 @@ public class FilmController {
 			int pagina=0;
 			System.out.println("La pagina es:"+page);
 			if(page!=null) {pagina = page;}
+			
 //			String referer = request.getHeader("referer"); //Referer me dice de que URL vengo (quien la llama)
 //			
 //			if(referer.contains("index")) { //Si vengo de index
