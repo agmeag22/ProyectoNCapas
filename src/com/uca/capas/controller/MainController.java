@@ -67,12 +67,12 @@ public class MainController {
 			//setting session to expiry in 30 mins
 			session.setMaxInactiveInterval(30*60);
 			
-			
-			if(account.getRole().getIdrole()==1) {
+			mav.setViewName("redirect:/function/list");
+			/*if(account.getRole().getIdrole()==2) {
 				mav.setViewName("redirect:/dashboard-client");
 			}else {
 				mav.setViewName("redirect:/function/list");
-			}
+			}*/
 			} else {
 				redirectAttributes.addFlashAttribute("error", 0);
 				
