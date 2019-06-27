@@ -47,11 +47,11 @@ public class Account {
 	@Column(name = "credit")
 	private float credit;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_role", referencedColumnName = "id_role")
 	private Role role;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user", referencedColumnName = "id_user")
 	private User user;
 
