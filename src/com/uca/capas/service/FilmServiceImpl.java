@@ -56,6 +56,12 @@ public class FilmServiceImpl implements FilmService{
 		
 	}
 
+	@Override
+	public List<Film> findAll() {
+		// TODO Auto-generated method stub
+	 return filmRepository.findAll();
+	}
+
 	
 	
 }

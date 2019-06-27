@@ -27,7 +27,7 @@ public class Role {
 	private Integer idrole;
 	
 	@Column(name = "role")
-	private Integer role;
+	private String role;
 
 	public Integer getIdrole() {
 		return idrole;
@@ -37,15 +37,15 @@ public class Role {
 		this.idrole = idrole;
 	}
 
-	public Integer getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Integer role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
-	public Role(Integer idrole, Integer role) {
+	public Role(Integer idrole, String role) {
 		super();
 		this.idrole = idrole;
 		this.role = role;
@@ -55,5 +55,7 @@ public class Role {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
 	
 }
