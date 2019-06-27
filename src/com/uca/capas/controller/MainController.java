@@ -43,7 +43,7 @@ public class MainController {
 			if(account.getRole().getIdrole()==1) {
 				mav.setViewName("redirect:/dashboard-client");
 			}else {
-				mav.setViewName("redirect:/dashboard-admin");
+				mav.setViewName("redirect:/function/list");
 			}
 		} else {
 			redirectAttributes.addFlashAttribute("error", 0);
