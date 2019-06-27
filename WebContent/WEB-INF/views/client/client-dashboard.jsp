@@ -37,6 +37,10 @@
 		</style>
 	</head>
 	<body>
+	<form method="POST" action="${pageContext.request.contextPath}/logout" ModelAttribute="account">
+	<input type="submit" class="btn btn-danger" value="Log Out">
+	</form> 
+	
 		<div class="container">
 			<div class="form-container">
 				<form class="filter-form" method="POST" action="${pageContext.request.contextPath}/dashboard">
@@ -47,6 +51,7 @@
 					  </div>
 					</div>
 				</form>
+				
 				<div class="film-detail">
 					<div class="row">
 						<c:forEach items="${films}" var="film">

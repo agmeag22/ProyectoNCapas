@@ -29,7 +29,7 @@
 <body>
 
 <div class="wraper">
-    <form action="${pageContext.request.contextPath}/login" method = "post">
+    <form action="${pageContext.request.contextPath}/login" method ="post">
     <div class="form-group col-md-12 container">
 		<input type="text" id="login" class="form-control t" name="username" placeholder="Username">
 		<input type="password" id="password" class="form-control t" name="password" placeholder="Password">
@@ -37,6 +37,5 @@
     </div>
     </form>
   </div>
-</div>
 </body>
 </html>
