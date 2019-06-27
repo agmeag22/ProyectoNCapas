@@ -6,13 +6,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Crear Pelicula</title>
+<title>Editar Pelicula</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
 <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
-<h1>Crear Pelicula</h1>
+<h1>Editar Pelicula</h1>
 <form action="${pageContext.request.contextPath}/film/store" modelAttribute="film" method="post">
 <input hidden name="idfilm" value="${film.idfilm}"/>
   <div class="form-group">

@@ -55,4 +55,10 @@ public class Ticket_typeServiceImpl implements Ticket_typeService{
 		ticket_typeRepository.delete(ticket_type);
 		
 	}
+
+	@Override
+	public List<Ticket_type> findAll() {
+		// TODO Auto-generated method stub
+		return ticket_typeRepository.findAll();
+	}
 }

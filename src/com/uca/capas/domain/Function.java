@@ -22,11 +22,11 @@ public class Function {
 	
 	
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_film", referencedColumnName = "id_film")
 	private Film film;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_type", referencedColumnName = "id_type")
 	private Ticket_type tickettype;
 	

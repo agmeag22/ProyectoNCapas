@@ -11,10 +11,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.uca.capas.domain.Film;
 import com.uca.capas.domain.Ticket_type;
 import com.uca.capas.domain.User;
 
 public interface Ticket_typeRepository extends JpaRepository<Ticket_type, Integer>{
 	
-	
+	public List<Ticket_type> findAll();
 }
