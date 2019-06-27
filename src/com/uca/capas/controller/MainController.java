@@ -54,7 +54,7 @@ public class MainController {
 			session.setMaxInactiveInterval(30*60);
 			
 			
-			if(account.getRole().getIdrole()==1) {
+			if(account.getRole().getIdrole()==2) {
 				mav.setViewName("redirect:/dashboard-client");
 			}else {
 				mav.setViewName("redirect:/function/list");
