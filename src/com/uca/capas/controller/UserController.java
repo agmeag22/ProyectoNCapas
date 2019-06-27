@@ -46,7 +46,7 @@ public class UserController {
 			System.out.println("El tamañò es:"+accounts.size());
 			mav.addObject("accounts", accounts);
 			mav.addObject("actual", (pagina + 1) * 10);
-			mav.addObject("total", userService.countAll());
+			mav.addObject("total", accountService.countAll());
 			mav.addObject("pagina", pagina + 1);
 			mav.setViewName("account/view_all");
 			return mav;
@@ -61,12 +61,13 @@ public class UserController {
 	
 
 	
-	@RequestMapping(value="user/view/{id}")
+	@RequestMapping(value="account/view/{id}")
 	public ModelAndView view(@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		Account account=accountService.findOne(id);
 		if(account!=null) {
 			mav.addObject("account", account);
+			System.out.println("El tamañò es:"+account.getUser().getUadress());
 			mav.setViewName("account/view");
 			}
 			else {

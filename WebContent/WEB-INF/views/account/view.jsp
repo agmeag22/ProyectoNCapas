@@ -43,12 +43,7 @@
     <input type="text" class="form-control" id="inputMunicipality" name="umunicipality" aria-describedby="municipalityHelp" value="${account.user.umunicipality}" readonly>
     <small id="municipalityHelp" class="form-text text-muted">Municipio de la persona.</small>
   </div>
-  <div class="form-group">
-    <label for="inputMunicipality">Dirección</label>
-    <input type="text" class="form-control" id="inputAddress" name="uaddress" aria-describedby="addressHelp" value="${account.user.uaddress}" readonly>
-    <small id="addressHelp" class="form-text text-muted"> Direccion de la persona.</small>
-  </div>
-  
+
   </div>
    <div class="form-group">
     <label for="inputUsername">Username</label>

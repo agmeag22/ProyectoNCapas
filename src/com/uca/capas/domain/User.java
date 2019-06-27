@@ -42,7 +42,7 @@ public class User {
 	private String umunicipality;
 	
 	@Column(name = "u_address")
-	private String uadress;
+	private String uaddress;
 
 	public Integer getIduser() {
 		return iduser;
@@ -93,11 +93,11 @@ public class User {
 	}
 
 	public String getUadress() {
-		return uadress;
+		return uaddress;
 	}
 
 	public void setUadress(String uadress) {
-		this.uadress = uadress;
+		this.uaddress = uadress;
 	}
 
 	public User(Integer iduser, String uname, String ulastname, String ubirthdate, String ucountry,
@@ -109,7 +109,7 @@ public class User {
 		this.ubirthdate = ubirthdate;
 		this.ucountry = ucountry;
 		this.umunicipality = umunicipality;
-		this.uadress = uadress;
+		this.uaddress = uadress;
 	}
 
 	public User() {
