@@ -62,6 +62,12 @@ public class AccountServiceImpl implements AccountService{
 		if(accountRepository.findOneUserInt(username, password)==1) result=true;
 		return result;
 	}
+	
+	public boolean findOneUserActive(String username, String password) throws DataAccessException {
+		boolean result=false;
+		if(accountRepository.findOneUserActive(username, password)==1) result=true;
+		return result;
+	}
 
 	@Override
 	public Account findOneUserByUsernamePassword(String username, String password) {
