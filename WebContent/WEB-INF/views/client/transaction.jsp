@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-s
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +35,9 @@ s
 		  padding: 5%;
 		  color:white;
 		  }
+		  .card-img-top {
+				height: auto;
+			}
 
 .form-container {
 	width: 50%;
@@ -50,7 +53,7 @@ s
 			<br>
 			<form action="${pageContext.request.contextPath}//film-detail/${film.idfilm}/reservacion"
 				method="post">
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<img src="${film.urlposter}" class="card-img-top" height="50%" width="50%">
 				</div>
 				<p class="card-text">Película: ${film.filmname}</p>
