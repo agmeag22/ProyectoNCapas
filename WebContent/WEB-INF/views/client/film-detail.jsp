@@ -35,7 +35,9 @@
 				margin-bottom: 20px;
 			}
 			
-		
+		.card-img-top {
+				height: auto;
+			}
 			
 			.btnsize{
 				margin:10px;
