@@ -85,7 +85,7 @@ public class CinemaController {
 	}
 	
 	@RequestMapping(value = "/film-detail/{id}/reservacion")
-	public ModelAndView filmReserving (HttpSession session,@PathVariable(value="id") int id,@RequestParam(value="idfunction") Integer idfunction,@RequestParam(value="ticketquantity") Integer ticketquantity,@RequestParam(value="idaccount") Integer idaccount) {
+	public ModelAndView filmReserving (HttpSession session,@PathVariable(value="id") int id,@RequestParam(value="idfunction") Integer idfunction,@RequestParam(value="ticketquantity") Integer ticketquantity) {
 		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=2){
 			return new ModelAndView("redirect:/");
 		}

@@ -8,6 +8,9 @@ s
 <head>
 <meta charset="UTF-8">
 <title>Transaccion en proceso</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
@@ -28,10 +31,13 @@ s
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <style>
-body {
-	background: #eeeeee;
-	padding: 5%;
-}
+
+			body{
+		  background-position: center;
+		  background-image: url("./../../resources/prism.png");
+		  padding: 5%;
+		  color:white;
+		  }
 
 .form-container {
 	width: 50%;
@@ -59,11 +65,11 @@ body {
 				<p class="card-text">Horario Escogido : ${transaction.function.starttime}</p>
 				<p class="card-text">Tipo de asientos : ${transaction.function.tickettype.type}</p>
 				<p class="card-text">Cantidad de asientos : ${transaction.ticketquantity}</p>
-				<p class="card-text">Costo por ticket : ${transaction.function.tickettype.ticketcost}</p>
-				<p class="card-text">Subtotal : ${transaction.total}</p>
-				<p class="card-text">Saldo a utilizar de la cuenta : ${transaction.total}</p>
-				<p class="card-text">Saldo remanente de la cuenta : ${transaction.total}</p>
-				<p class="card-text">Gran total : ${transaction.total}</p>
+				<p class="card-text">Costo por ticket :$${transaction.function.tickettype.ticketcost}</p>
+				<p class="card-text">Subtotal : $${transaction.total}</p>
+				<p class="card-text">Saldo a utilizar de la cuenta : $${transaction.total}</p>
+				<p class="card-text">Saldo remanente de la cuenta : $${transaction.total}</p>
+				<p class="card-text">Gran total : $${transaction.total}</p>
 				
 				<button type="submit" class="btn btn-primary w-100">Continuar</button>
 			</form>
