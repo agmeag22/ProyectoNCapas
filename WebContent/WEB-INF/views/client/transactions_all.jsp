@@ -22,6 +22,20 @@
   <!-- Custom styles for this template-->
   <link href="./../resources/css/sb-admin.css" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style type="text/css">
+body{
+		  background-position: center;
+		  background-image: url("./../resources/prism.png");
+		  padding: 5%;
+		  color:white;
+		  }
+		  .modal{
+		  	color:black;
+		  }
+		  .table{
+		  color:white;
+		  }
+</style>
 </head>
 <body id="page-top">
 
@@ -64,7 +78,7 @@
 	</div>
 	
 <br/>
-	<table class="table">
+	<table class="table table-sm">
 		<thead>
 		  <tr>
 		    <th scope="col">Accion</th>
@@ -78,7 +92,7 @@
 				<tr>
 					<td>
 						<div class="btn-group" role="group">
-						  <a onclick="showModal('${film.function.film.filmname}','${film.ticketquantity}','${film.function.tickettype.type}')" class="btn btn-secondary">Ver</a>
+						  <a onclick="showModal('${film.function.film.filmname}','${film.ticketquantity}','${film.function.tickettype.type}','$${film.total}')" class="btn btn-secondary">Ver</a>
 						</div>
 					</td>
 				<td><fmt:formatNumber pattern = "########"
@@ -108,7 +122,7 @@
       <p>Pelicula: <span id="pelicula"></span></p>
       <p>Cantidad: <span id="cantidad"></span></p>
       <p>Tipo Asiento: <span id="ticket"></span></p>
-        
+      <p>Total: <span id="total"></span></p>  
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         
@@ -118,10 +132,11 @@
  
 </div>
 <script>
-function showModal(pelicula,cantidad,ticket){
+function showModal(pelicula,cantidad,ticket,total){
 	$('#pelicula').html(pelicula);
 	 $('#cantidad').html(cantidad);
 	 $('#ticket').html(ticket);
+	 $('#total').html(total);
 	$('#commentModal').modal();
 	
 }
