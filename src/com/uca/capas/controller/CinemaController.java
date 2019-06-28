@@ -1,5 +1,6 @@
 package com.uca.capas.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -94,6 +95,7 @@ public class CinemaController {
 		transaction.setAccount(accountService.findOne((int)session.getAttribute("account_id")));
 		transaction.setFunction(functionService.findOne(idfunction));
 		transaction.setTicketquantity(ticketquantity);
+		transaction.setTransactiondatehour(new Date(System.currentTimeMillis()  ));
 		transaction.setTotal(ticketquantity*(functionService.findOne(idfunction).getTickettype().getTicketcost()));
 		session.setAttribute("transaction", transaction);
 		mav.addObject("transaction", transaction);

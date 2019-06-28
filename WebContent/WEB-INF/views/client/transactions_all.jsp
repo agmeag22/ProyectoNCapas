@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>   
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,8 +62,9 @@
 						  <a onclick="showModal('${film.function.film.filmname}','${film.ticketquantity}','${film.function.tickettype.type}')" class="btn btn-secondary">Ver</a>
 						</div>
 					</td>
-				<td>${film.idtransaction}</td>
-				<td>${film.transactiondatehour}</td>
+				<td><fmt:formatNumber pattern = "########"
+         minIntegerDigits="8" value = "${film.idtransaction}" /></td>
+				<td><fmt:formatDate value="${film.transactiondatehour}" pattern="MM-dd-yyyy HH:mm" /></td>
 				</tr>	
 			</c:forEach>
 		</tbody>  
