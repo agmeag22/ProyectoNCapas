@@ -27,11 +27,17 @@ s
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		
+		
 <style>
-body {
-	background: #eeeeee;
-	padding: 5%;
-}
+	body{
+		  background-position: center;
+		  background-image: url("./../../resources/prism.png");
+		  padding: 5%;
+		  color:white;
+		  }
 
 .form-container {
 	width: 50%;
@@ -53,8 +59,8 @@ body {
 				<p class="card-text">Película: ${film.filmname}</p>
 				<p class="card-text">Duración: ${film.duration}</p>
 				<div class="form-group">
-					<label for="idfilm">Horario Funcion</label> <select id="idfunction"
-						class="form-control" name="idfunction" required>
+					<label for="idfilm">Horario Funcion</label> 
+					<select id="idfunction" class="form-control" name="idfunction" required>
 						<c:forEach items="${functions}" var="function">
 							<option value="${function.idfunction}">${function.starttime}  -  ${function.tickettype.type}</option>
 						</c:forEach>
