@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-s
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,10 +65,11 @@ s
 				<p class="card-text">Tipo de asientos : ${transaction.function.tickettype.type}</p>
 				<p class="card-text">Cantidad de asientos : ${transaction.ticketquantity}</p>
 				<p class="card-text">Costo por ticket :$${transaction.function.tickettype.ticketcost}</p>
-				<p class="card-text">Subtotal : $${transaction.total}</p>
-				<p class="card-text">Saldo a utilizar de la cuenta : $${transaction.total}</p>
-				<p class="card-text">Saldo remanente de la cuenta : $${transaction.total}</p>
+				<p class="card-text">Subtotal : $${subtotal}</p>
+				<p class="card-text">Saldo a utilizar de la cuenta : $${saldoutilizado}</p>
+				<p class="card-text">Saldo remanente de la cuenta : $${saldocuenta}</p>
 				<p class="card-text">Gran total : $${transaction.total}</p>
+				<input name="saldocuenta" hidden value="${saldocuenta}">
 				
 				<button type="submit" class="btn btn-primary w-100">Continuar</button>
 			</form>

@@ -109,17 +109,39 @@
     <small id="passwordHelp" class="form-text text-muted"> Contraseña de Usuario.</small>
   </div>
   
-   <div class="form-group">
-    <label for="inputState">Estado del usuario</label>
-    <input type="text" class="form-control" id="inputState name="activestate" aria-describedby="activestateHelp" value="${account.activestate}" >
-    <small id="activestateHelp" class="form-text text-muted">Estado activo o inactivo</small>
-  </div>
+   
+    <input type="text" class="form-control" id="inputState name="activestate" aria-describedby="activestateHelp" value="${account.activestate}" readonly hidden >
+    
   
+ 
+    <input type="text" class="form-control" id="inputOnline" name="onlinestatus" aria-describedby="OnlineHelp" value="${account.onlinestatus}" readonly hidden>
+    
   <div class="form-group">
-    <label for="inputOnline">Online</label>
-    <input type="text" class="form-control" id="inputOnline" name="onlinestatus" aria-describedby="OnlineHelp" value="${account.onlinestatus}" readonly>
-    <small id="OnlineHelp" class="form-text text-muted"> Estado Online.</small>
+   <label for="inputState">Estado del usuario</label>
+   <br>
+  <c:set var = "active" value = "${account.activestate}"/>
+			<c:if test = "${active<1}">
+			<td><a class="btn btn-danger btn-sm">Inactivo</a></td>
+			</c:if>
+			<c:if test = "${active>0}">
+			<td><a class="btn btn-success btn-sm")" >Activo</a></td>
+			</c:if>
+			
+			<small id="activestateHelp" class="form-text text-muted">Estado activo o inactivo</small>
   </div>
+			 <div class="form-group">
+   			 <label for="inputOnline">Online</label>
+   			 <br>
+			 <c:set var = "onlinestatus" value = "${account.onlinestatus}"/>
+			<c:if test = "${onlinestatus<1}">
+			
+			<td><a class="btn btn-danger btn-sm">Inactivo</a></td>
+			</c:if>
+			<c:if test = "${onlinestatus>0}">
+			<td><a class="btn btn-success btn-sm" >Activo</a></td>
+			</c:if>
+			<small id="OnlineHelp" class="form-text text-muted"> Estado Online.</small>
+  			</div>
   
    <div class="form-group">
     <label for="inputComentario">Comentario</label>
