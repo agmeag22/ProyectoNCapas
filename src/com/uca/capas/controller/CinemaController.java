@@ -62,8 +62,9 @@ public class CinemaController {
 		ModelAndView filmDetail = new ModelAndView();
 		
 		Film film = filmService.findOne(id);
-		
+		List<Function> functions=functionService.findAllbyIdFilm(id);
 		filmDetail.addObject("film", film);
+		filmDetail.addObject("functions", functions);
 		filmDetail.setViewName("client/film-detail");
 		
 		return filmDetail;
@@ -86,27 +87,61 @@ public class CinemaController {
 	}
 	
 	@RequestMapping(value = "/film-detail/{id}/reservacion")
-	public ModelAndView filmReserving (HttpSession session,@PathVariable(value="id") int id,@RequestParam(value="idfunction") Integer idfunction,@RequestParam(value="ticketquantity") Integer ticketquantity) {
+	public ModelAndView filmReserving (HttpSession session,@PathVariable(value="id") int id,@RequestParam(value="idfunction") Integer idfunction,@RequestParam(value="ticketquantity") Integer ticketquantity,@RequestParam(value="accountcredit",required=false) String accountcredit) {
 		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=2){
 			return new ModelAndView("redirect:/");
 		}
 		ModelAndView mav = new ModelAndView();
 		Transaction transaction=new Transaction();
+		float total=ticketquantity*(functionService.findOne(idfunction).getTickettype().getTicketcost());
+		float subtotal=ticketquantity*(functionService.findOne(idfunction).getTickettype().getTicketcost());;
+		float saldocuenta=accountService.findOne((int)session.getAttribute("account_id")).getCredit();;
+		float saldoutilizado=0;
+		float saldocuentaaux=saldocuenta;
+	
 		transaction.setAccount(accountService.findOne((int)session.getAttribute("account_id")));
 		transaction.setFunction(functionService.findOne(idfunction));
 		transaction.setTicketquantity(ticketquantity);
 		transaction.setTransactiondatehour(new Date(System.currentTimeMillis()  ));
-		transaction.setTotal(ticketquantity*(functionService.findOne(idfunction).getTickettype().getTicketcost()));
+		if(accountcredit==null) {
+		}else {
+			if(saldocuenta<total) {
+			total=total-saldocuenta;
+			saldoutilizado=saldocuenta;
+			saldocuenta=0;
+			}else if(saldocuenta==total){
+				total=total-saldocuenta;
+				saldocuenta=saldocuenta-total;
+				saldoutilizado=saldocuenta;
+			}else if(saldocuenta>total){
+				saldocuenta=saldocuenta-total;
+				saldoutilizado=saldocuentaaux-saldocuenta;
+				total=0;
+			}
+		}
+		transaction.setTotal(total);
 		session.setAttribute("transaction", transaction);
 		mav.addObject("transaction", transaction);
+		mav.addObject("total", total);
+		mav.addObject("subtotal", subtotal);
+		mav.addObject("saldocuenta", saldocuenta);
+		mav.addObject("saldoutilizado", saldoutilizado);
 		mav.setViewName("client/transactionconfirm");
 		return mav;
 	}
 	@RequestMapping(value = "/film-detail/{id}/reservado")
-	public ModelAndView filmReserved (HttpSession session,@PathVariable(value="id") int id,@RequestParam(value="idfunction") Integer idfunction,@RequestParam(value="ticketquantity") Integer ticketquantity,@RequestParam(value="idaccount") Integer idaccount) {
+	public ModelAndView filmReserved (HttpSession session,
+			@PathVariable(value="id") int id,
+			@RequestParam(value="idfunction") Integer idfunction,
+			@RequestParam(value="ticketquantity") Integer ticketquantity,
+			@RequestParam(value="idaccount") Integer idaccount,
+			@RequestParam(value="saldocuenta") float saldocuenta) {
 		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=2){
 			return new ModelAndView("redirect:/");
 		}
+		Account account=accountService.findOne(idaccount);
+		account.setCredit(saldocuenta);
+		accountService.save(account);
 		transactionService.save((Transaction)session.getAttribute("transaction"));
 		return new ModelAndView("redirect:/transaction/list");
 	}

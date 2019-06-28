@@ -89,9 +89,11 @@ s
 						<option value="14">14</option>
 						<option value="14">15</option>
 					</select>
-
 				</div>
-
+				<div class="form-check form-group">
+					<input type="checkbox" class="form-check-input"  name="accountcredit" id="accountcredit" >
+					<label class="form-check-label" for="accountcredit">Utilizar saldo cuenta</label>
+				</div>
 				<button type="submit" class="btn btn-primary w-100">Continuar</button>
 			</form>
 		</div>

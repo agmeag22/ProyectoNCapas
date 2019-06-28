@@ -103,7 +103,13 @@
 			<td>${function.film.filmname}</td>
 			<td>${function.film.description}</td>
 			<td>${function.starttime }</td>
-			<td>${function.activestate }</td>
+			<c:set var = "active" value = "${function.activestate}"/>
+			<c:if test = "${active<1}">
+			<td><a class="btn btn-danger btn-sm">Inactivo</a></td>
+			</c:if>
+			<c:if test = "${active>0}">
+			<td><a class="btn btn-success btn-sm")" >Activo</a></td>
+			</c:if>
 			
 			</tr>	
 		</c:forEach>

@@ -39,6 +39,10 @@
 				width: 300px;
 				height: 400px;
 			}
+			
+			.btnsize{
+				margin:10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -51,22 +55,14 @@
 
 					<p class="card-text">Película: ${film.filmname}</p>
 				    <p class="card-text">Duración: ${film.duration}</p>
-				    <form>
-				    <input type="number" name="ticket_quantity"/>
-				    
-				      <div class="form-group">
-					     <label  for="tickettype">Tipo de Ticket</label>
-					    <select id="tickettype" class="form-control" name="tickettype" required >
-					      
-						  <c:forEach items="${tickettypes}" var="tickettype">
-						  <option value="${tickettype.idtype}">${tickettype.type}</option>
-						  </c:forEach>
-						</select>
-					   
-					  </div>
-				    </form>
-
+				    <p class="card-text">Horarios: ${film.filmname}</p>
+				    <div>
+				    <c:forEach items="${functions}" var="function">
+							 <button class="btn btn-light btnsize" disabled>${function.starttime}  -  ${function.tickettype.type}</button>
+						</c:forEach>
+						</div>
 				    <a href="${pageContext.request.contextPath}/film-detail/${film.idfilm}/reserva" class="btn btn-outline-warning w-100" >Reservar.</a>
+					
 				</div>
 			</div>
 		</div>
