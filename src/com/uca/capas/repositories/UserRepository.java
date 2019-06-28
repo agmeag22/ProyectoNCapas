@@ -24,5 +24,21 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	@Query(nativeQuery=true, value="select * from table_user where id_store=:code")
 	public List<User> findBySucursal(@Param("code") int code) throws DataAccessException ;
 	
+	@Query(nativeQuery=true, value="select id_user from public.table_user "
+			+ "where u_name= :uname "
+			+ "and u_lastname= :ulastname "
+			+ "and u_birthdate=:ubirthdate "
+			+ "and u_country=:ucountry"
+			+ "and u_municipality=:umunicipality"
+			+ "and u_address=:uaddress")
+	public int findIdUser(
+			@Param("uname")String uname,
+			@Param("ulastname") String ulastname,
+			@Param("ubirthdate") String ubirthdate,
+			@Param("ucountry") String ucountry,
+			@Param("umunicipality") String umunicipality,
+			@Param("uaddress") String uaddress
+			)throws DataAccessException;
+	
 	
 }

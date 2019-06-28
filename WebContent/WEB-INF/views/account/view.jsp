@@ -42,17 +42,22 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
+     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="${pageContext.request.contextPath}/account/list">
           <i class="fas fa-fw fa-users"></i>
           <span>Usuarios</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="${pageContext.request.contextPath}/function/list">
           <i class="fas fa-fw fa-film"></i>
           <span>Cartelera</span></a>
+      </li>
+       <li class="nav-item ">
+        <a class="nav-link" href="${pageContext.request.contextPath}/film/list">
+          <i class="fas fa-fw fa-film"></i>
+          <span>Peliculas</span></a>
       </li>
     </ul>
 
