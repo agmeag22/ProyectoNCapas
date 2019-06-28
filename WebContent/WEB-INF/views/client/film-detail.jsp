@@ -66,7 +66,7 @@
 					  </div>
 				    </form>
 
-				    <a href="#" class="btn btn-outline-warning w-100">Reservar.</a>
+				    <a href="${pageContext.request.contextPath}/film-detail/${film.idfilm}/reserva" class="btn btn-outline-warning w-100" >Reservar.</a>
 				</div>
 			</div>
 		</div>
