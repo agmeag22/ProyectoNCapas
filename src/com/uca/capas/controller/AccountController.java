@@ -85,5 +85,35 @@ public class AccountController {
 			}
 		return mav;	
 	}
+	
+	@RequestMapping(value="account/enable/{id}")
+	public ModelAndView enable(HttpSession session,@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
+			return new ModelAndView("redirect:/logout");
+		}
+		Account account=accountService.findOne(id);
+		if(account!=null) {
+			account.setActivestate(1);
+			accountService.save(account);
+			}
+		return new ModelAndView("redirect:/account/list");	
+	}
+	
+	
+	@RequestMapping(value="account/disable/{id}")
+	public ModelAndView disable(@RequestParam String comment, HttpSession session,@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
+		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
+			return new ModelAndView("redirect:/logout");
+		}
+		Account account=accountService.findOne(id);
+		if(account!=null) {
+			account.setComment(comment);
+			account.setActivestate(0);
+			accountService.save(account);
+			}
+		return new ModelAndView("redirect:/account/list");	
+	}
+	
+	
 }
 

@@ -44,7 +44,7 @@
     
     <div class="form-group">
     <label for="inputBirthdate">Fecha Nacimiento</label>
-    <input type="text" class="form-control" id="inputBirthdate" name="ubirthdate" aria-describedby="birthdateHelp"  required>
+    <input type="date" class="form-control" id="inputBirthdate" name="ubirthdate" aria-describedby="birthdateHelp"  required>
     <small id="birthdateHelp" class="form-text text-muted">Fecha de Nacimiento.</small>
   </div>
  

@@ -12,6 +12,11 @@
 
   <!-- Page level plugin CSS-->
   <link href="./../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <!-- Custom styles for this template-->
   <link href="./../resources/css/sb-admin.css" rel="stylesheet">
@@ -28,10 +33,9 @@
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-        <a class="nav-link ">
+         <a class="nav-link " href="${pageContext.request.contextPath}/logout">
           <button class="btn btn-outline-danger btn-sm btn-block" >Logout</button>
         </a>  
-      </li>
     </ul>
 
   </nav>
@@ -95,7 +99,7 @@
 				<td>
 					<div class="btn-group">
 					  <a href="${pageContext.request.contextPath}/account/view/${account.idaccount}" class="btn btn-primary">Ver</a>
-					  <a href="${pageContext.request.contextPath}/account/edit/${account.idaccount}" type="button" class="btn btn-secondary">Editar</a>
+					  
 					</div>
 				</td>
 			<td>${account.idaccount}</td>
@@ -104,17 +108,17 @@
 			
 			<c:set var = "online" value = "${account.onlinestatus}"/>
 			<c:if test = "${online<1}">
-			<td><button class="btn btn-danger btn-sm">Offline</button></td>
+			<td><a class="btn btn-danger btn-sm">Offline</a></td>
 			</c:if>
 			<c:if test = "${online>0}">
-			<td><button class="btn btn-success btn-sm">Online</button></td>
+			<td><a class="btn btn-success btn-sm">Online</a></td>
 			</c:if>
 			<c:set var = "active" value = "${account.activestate}"/>
 			<c:if test = "${active<1}">
-			<td><button class="btn btn-danger btn-sm">Inactivo</button></td>
+			<td><a class="btn btn-danger btn-sm" href="${pageContext.request.contextPath}/account/enable/${account.idaccount}">Inactivo</a></td>
 			</c:if>
 			<c:if test = "${active>0}">
-			<td><button class="btn btn-success btn-sm">Activo</button></td>
+			<td><a class="btn btn-success btn-sm" onclick="showModal(${account.idaccount})" >Activo</a></td>
 			</c:if>
 			<td></td>
 			
@@ -151,26 +155,37 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-</div>
-
  
 
+ 
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
+<form id="disableForm" method="post">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="commentModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p>Comentario:</p>
+        <textarea name="comment" style="width:100%" required></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+<script>
+function showModal(id){
+	 $('#disableForm').attr('action', '${pageContext.request.contextPath}/account/disable/'+id);
+	$('#commentModal').modal();
+	
+}
+</script>
 </body>
 </html>

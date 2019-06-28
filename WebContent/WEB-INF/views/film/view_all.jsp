@@ -29,10 +29,9 @@
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-        <a class="nav-link ">
+        <a class="nav-link " href="${pageContext.request.contextPath}/logout">
           <button class="btn btn-outline-danger btn-sm btn-block" >Logout</button>
-        </a>  
-      </li>
+        </a> 
     </ul>
 
   </nav>
@@ -68,7 +67,7 @@
 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
 		<div class="btn-group btn-group align-left" role="group" >
 		<a class="btn btn-secondary" href=" ${pageContext.request.contextPath}/film/new	">Crear Pelicula	</a>
-		<a class="btn btn-dark" href=" ${pageContext.request.contextPath}/function/list">Listado Funciones</a>
+		
 		</div>
 		
 			<div class="btn-group align-rigth" role="group" aria-label="Button group with nested dropdown">

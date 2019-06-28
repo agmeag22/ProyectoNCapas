@@ -29,7 +29,7 @@
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-        <a class="nav-link ">
+          <a class="nav-link " href="${pageContext.request.contextPath}/logout">
           <button class="btn btn-outline-danger btn-sm btn-block" >Logout</button>
         </a>  
       </li>

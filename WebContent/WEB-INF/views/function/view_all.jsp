@@ -29,10 +29,10 @@
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-        <a class="nav-link ">
+        <a class="nav-link " href="${pageContext.request.contextPath}/logout">
           <button class="btn btn-outline-danger btn-sm btn-block" >Logout</button>
         </a>  
-      </li>
+
     </ul>
 
   </nav>
@@ -68,8 +68,6 @@
 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
 <div class="btn-group" role="group" >
 <a class="btn btn-secondary" href=" ${pageContext.request.contextPath}/function/new	">Crear Funcion</a>
-<a class="btn btn-light" href=" ${pageContext.request.contextPath}/film/new	">Crear Pelicula</a>
-<a class="btn btn-dark" href=" ${pageContext.request.contextPath}/film/list">Listado Peliculas</a>
 </div>
 <div class="btn-group align-rigth" role="group" aria-label="Button group with nested dropdown">
 		  <c:if test = "${pagina > 1}">
