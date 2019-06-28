@@ -24,4 +24,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
 	public Page<Transaction> findByAccount(Account account,Pageable page);
 	public Page<Transaction> findByTransactiondatehourBetweenAndAccount(Date start,Date end,Account a,Pageable page);
 	
+	public List<Transaction> findByTransactiondatehourBetweenAndAccount(Date start,Date end,Account a);
+	
+	
 }

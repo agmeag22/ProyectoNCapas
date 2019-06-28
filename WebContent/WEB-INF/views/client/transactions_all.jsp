@@ -27,19 +27,23 @@
 
         <div class="col-sm-10 col-md-10 col-lg-10 offset-sm-1 offset-md-1 offset-lg-1">
 <h1>Listado Transacciones</h1>
-<form class="needs-validation" action="" method="get">
+<form class="form-horizontal" action="" method="get">
   <div class="form-row">
   
 	    <div class="col-md-4 col-lg-2 mb-3">
-	    <label>Inicio:</label>
-		<input type="date" class="form-control" name="start" />
+	    <label  class ="control-label col-sm-3">Inicio:</label>
+	    <div class="	">
+		<input type="date" class="form-control" name="start" value="<fmt:formatDate value="${start}" pattern="yyyy-MM-dd" />"/>
+		</div>
 		</div>
 		<div class="col-md-4 col-lg-2 mb-3">
-		<label>Fin:</label>
-		<input type="date" class="form-control" name="end" />
+		<label class ="control-label col-sm-3">Fin:</label>
+		<div class="">
+		<input type="date" class="form-control" name="end" value="<fmt:formatDate value="${end}" pattern="yyyy-MM-dd" />" />
+		</div>
 		</div>
 		<div class="col-md-4 col-lg-2 mb-3">
-		<label></label>
+		<label class ="control-label col-sm-3" style="color:transparent">SS</label>
 		<input type="submit" class="form-control" value="Filtrar"/>
 		</div>
 	</div>
