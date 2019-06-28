@@ -40,24 +40,34 @@
 		  background-position: center;
 		  background-image: url("./resources/prism.png");
 		  }
+		  
+		  .btnright{
+		  position:absolute;
+		    transition: .5s ease;
+		    top: 10%;
+		    right: 80%;
+		  }
+		  .btnleft{
+		  position:absolute;
+		    transition: .5s ease;
+		    top: 10%;
+		    left: 90%;
+		  }
 		</style>
 	</head>
 	<body>
-	<form method="POST" action="${pageContext.request.contextPath}/logout" >
-	<input type="submit" class="btn btn-danger" value="Log Out">
-	</form> 
+	
+	 
+	
+  <form method="POST" action="${pageContext.request.contextPath}/transaction/list" >
+  <button type="submit" class="btn btn-outline-light btnright">Historial de transacciones</button>
+	</form>
+<form method="POST" action="${pageContext.request.contextPath}/logout" >
+  <button type="submit" class="btn btn-danger btnleft">Log Out</button>
+  </form>
 	
 		<div class="container">
 			<div class="form-container">
-				<form class="filter-form" method="POST" action="${pageContext.request.contextPath}/dashboard">
-					<div class="input-group">
-					  <input type="text" class="form-control" name="filter" placeholder="Buscar..." autocomplete="off" >
-					  <div class="input-group-prepend" style="width:20%;">
-						  <input type="submit" class="btn btn-dark w-100" value="Ir">
-					  </div>
-					</div>
-				</form>
-				
 				<div class="film-detail">
 					<div class="row">
 						<c:forEach items="${films}" var="film">
