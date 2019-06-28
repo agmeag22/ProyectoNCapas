@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.uca.capas.domain.Account;
 import com.uca.capas.domain.Film;
 import com.uca.capas.domain.Transaction;
 import com.uca.capas.domain.User;
@@ -18,4 +19,6 @@ import com.uca.capas.domain.User;
 public interface TransactionRepository extends JpaRepository<Transaction, Integer>{
 	
 	public Page<Transaction> findAll(Pageable page);
+	
+	public Page<Transaction> findByAccount(Account account,Pageable page);
 }

@@ -16,6 +16,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.uca.capas.domain.Account;
 import com.uca.capas.domain.Transaction;
 import com.uca.capas.domain.User;
 import com.uca.capas.repositories.AccountRepository;
@@ -34,6 +35,12 @@ public class TransactionServiceImpl implements TransactionService{
 		// TODO Auto-generated method stub
 		return transactionRepository.findAll(PageRequest.of(page, 10, new Sort(Direction.ASC, "idtransaction"))).getContent();
 	}
+	
+	public List<Transaction> findAll(int page,Account id) {
+		// TODO Auto-generated method stub
+		return transactionRepository.findByAccount(id,PageRequest.of(page, 10, new Sort(Direction.ASC, "idtransaction"))).getContent();
+	}
+	
 	
 	public Transaction findOne(Integer transaction) {
 		// TODO Auto-generated method stub

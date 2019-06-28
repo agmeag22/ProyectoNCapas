@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.uca.capas.domain.Account;
 import com.uca.capas.domain.Film;
 import com.uca.capas.domain.Transaction;
 import com.uca.capas.repositories.FilmRepository;
+import com.uca.capas.service.AccountService;
 import com.uca.capas.service.FilmService;
 import com.uca.capas.service.TransactionService;
 import com.uca.capas.service.UserService;
@@ -28,6 +30,9 @@ import com.uca.capas.service.UserService;
 public class TransactionController {
 	@Autowired
 	private TransactionService transService;
+	
+	@Autowired
+	private AccountService accountService;
 	
 	
 	@RequestMapping("transaction/list")
@@ -62,8 +67,8 @@ public class TransactionController {
 //	
 			//Page = objeto de spring data que representa la pagina
 			List<Transaction> films = null;
-			
-			films = transService.findAll(pagina);
+			Account account = accountService.findOne((int)session.getAttribute("account_id"));
+			films = transService.findAll(pagina,account);
 			System.out.println("El tamañò es:"+films.size());
 			//films=(List<Film>) filmRepo.findAll();
 			//Como Page no es una coleccion en si, utilizo el metodo getContent() el cual me devuelve la coleccion (de clientes) que representa la pagina
