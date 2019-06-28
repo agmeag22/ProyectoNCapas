@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>TAREA 01 DE PROGRAMACIÓN DE N-CAPAS | BIBLIOTECA</title>
+		<title>TAREA 01 DE PROGRAMACIÃN DE N-CAPAS | BIBLIOTECA</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -48,8 +48,24 @@
 					<img src="${film.urlposter}" class="card-img-top" height="50%" width="50%">
 				</div>
 				<div class="col-md-6">
+
 					<p class="card-text">Película: ${film.filmname}</p>
 				    <p class="card-text">Duración: ${film.duration}</p>
+				    <form>
+				    <input type="number" name="ticket_quantity"/>
+				    
+				      <div class="form-group">
+					     <label  for="tickettype">Tipo de Ticket</label>
+					    <select id="tickettype" class="form-control" name="tickettype" required >
+					      
+						  <c:forEach items="${tickettypes}" var="tickettype">
+						  <option value="${tickettype.idtype}">${tickettype.type}</option>
+						  </c:forEach>
+						</select>
+					   
+					  </div>
+				    </form>
+
 				    <a href="#" class="btn btn-outline-warning w-100">Reservar.</a>
 				</div>
 			</div>

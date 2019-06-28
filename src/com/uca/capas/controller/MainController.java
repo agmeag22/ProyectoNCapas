@@ -44,10 +44,22 @@ public class MainController {
 	private UserService userServ;
 	
 	@RequestMapping(value="/")
-	public ModelAndView initMain() {
+	public ModelAndView initMain(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		if(session.getAttribute("user") != null && session.getAttribute("role")!=null && session.getAttribute("account_id")!=null ){
+			
+			
+			if((Integer)session.getAttribute("role")==2) {
+				mav.setViewName("redirect:/dashboard-client");
+			}else {
+				mav.setViewName("redirect:/function/list");
+			}
+		}else {
+			mav.setViewName("login");
+		}
 		
-		mav.setViewName("login");
+		
+		
 		return mav;
 	}
 	
@@ -55,7 +67,7 @@ public class MainController {
 	public ModelAndView login(@RequestParam(value="username") String username,@RequestParam(value="password") String password, HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
 		ModelAndView mav = new ModelAndView();
 		Account account = null;	
-		if(accountServ.findOneUser(username, password)) {
+		if(accountServ.findOneUserActive(username, password)) {
 			account=accountServ.findOneUserByUsernamePassword(username, password);
 			if(account!=null) {
 			account.setOnlinestatus(1);
@@ -90,10 +102,10 @@ public class MainController {
 	}
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpSession session,HttpServletRequest request) {
-		int account_id = (Integer)session.getAttribute("account_id");
-		Account account = accountServ.findOne(account_id);
-		account.setOnlinestatus(0);
-		accountServ.save(account);
+//		int account_id = (Integer)session.getAttribute("account_id");
+//		Account account = accountServ.findOne(account_id);
+//		account.setOnlinestatus(0);
+//		accountServ.save(account);
 		session.invalidate();
 		return new ModelAndView("redirect:/");
 	}

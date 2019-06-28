@@ -19,5 +19,6 @@ public interface AccountService {
 	public void save(Account account);
 	public void delete(Account account);
 	public boolean findOneUser(String username, String password) throws DataAccessException ;
+	public boolean findOneUserActive(String username, String password) throws DataAccessException ;
 	public Account findOneUserByUsernamePassword(String username, String password);
 }

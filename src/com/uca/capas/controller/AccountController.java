@@ -38,7 +38,7 @@ public class AccountController {
 				HttpServletRequest request, 
 				@RequestParam(required = false) Integer page) throws Exception{
 		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/logout");
 		}
 			ModelAndView mav = new ModelAndView();
 			int pagina=0;
@@ -60,7 +60,7 @@ public class AccountController {
 	@RequestMapping(value="account/store",method=RequestMethod.POST)
 	public ModelAndView store(HttpSession session,@ModelAttribute(name="account") Account account ,HttpServletRequest request) throws Exception{
 		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/logout");
 		}
 		accountService.save(account);
 		return new ModelAndView("redirect:/account/list");	
@@ -71,7 +71,7 @@ public class AccountController {
 	@RequestMapping(value="account/view/{id}")
 	public ModelAndView view(HttpSession session,@PathVariable(value="id") int id ,HttpServletRequest request) throws Exception{
 		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=1){
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/logout");
 		}
 		ModelAndView mav = new ModelAndView();
 		Account account=accountService.findOne(id);
