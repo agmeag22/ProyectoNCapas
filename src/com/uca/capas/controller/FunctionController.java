@@ -81,6 +81,7 @@ public class FunctionController {
 		 Function function;
 		   if(idfunction==null) {
 			 function = new Function();
+			 function.setAvailability(200);
 			
 		   }else {
 			  function = functionService.findOne(idfunction);
