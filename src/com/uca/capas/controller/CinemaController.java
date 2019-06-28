@@ -49,6 +49,7 @@ public class CinemaController {
 		
 		ModelAndView transaction = new ModelAndView();
 		
+		transaction.addObject("function", functionService.findAllByFilmId(id));
 		transaction.setViewName("client/transaction");
 		
 		return transaction;
