@@ -51,6 +51,9 @@ public class Transaction {
 	@Column(name = "total")
 	private float total;
 
+	@Column(name = "usedcredit")
+	private float usedcredit;
+
 	public Integer getIdtransaction() {
 		return idtransaction;
 	}
@@ -101,11 +104,16 @@ public class Transaction {
 		this.total = total;
 	}
 
+	public float getUsedcredit() {
+		return usedcredit;
+	}
 
-	
+	public void setUsedcredit(float usedcredit) {
+		this.usedcredit = usedcredit;
+	}
 
 	public Transaction(Integer idtransaction, Account account, Function function, Date transactiondatehour,
-			int ticketquantity, float total) {
+			int ticketquantity, float total, float usedcredit) {
 		super();
 		this.idtransaction = idtransaction;
 		this.account = account;
@@ -113,12 +121,18 @@ public class Transaction {
 		this.transactiondatehour = transactiondatehour;
 		this.ticketquantity = ticketquantity;
 		this.total = total;
+		this.usedcredit = usedcredit;
 	}
 
 	public Transaction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
+	
+
+
 	
 	
 	

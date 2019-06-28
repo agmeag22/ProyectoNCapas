@@ -119,6 +119,7 @@ public class CinemaController {
 				total=0;
 			}
 		}
+		transaction.setUsedcredit(saldoutilizado);
 		transaction.setTotal(total);
 		session.setAttribute("transaction", transaction);
 		mav.addObject("transaction", transaction);

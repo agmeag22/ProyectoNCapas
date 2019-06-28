@@ -92,7 +92,7 @@ body{
 				<tr>
 					<td>
 						<div class="btn-group" role="group">
-						  <a onclick="showModal('${film.function.film.filmname}','${film.ticketquantity}','${film.function.tickettype.type}','$${film.total}')" class="btn btn-secondary">Ver</a>
+						  <a onclick="showModal('${film.function.film.filmname}','${film.ticketquantity}','${film.function.tickettype.type}','$${film.total}','$${film.usedcredit}')" class="btn btn-secondary">Ver</a>
 						</div>
 					</td>
 				<td><fmt:formatNumber pattern = "########"
@@ -122,7 +122,8 @@ body{
       <p>Pelicula: <span id="pelicula"></span></p>
       <p>Cantidad: <span id="cantidad"></span></p>
       <p>Tipo Asiento: <span id="ticket"></span></p>
-      <p>Total: <span id="total"></span></p>  
+      <p>Total: <span id="total"></span></p> 
+      <p>Saldo Utilizado: <span id="saldoutilizado"></span></p>  
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         
@@ -132,11 +133,12 @@ body{
  
 </div>
 <script>
-function showModal(pelicula,cantidad,ticket,total){
+function showModal(pelicula,cantidad,ticket,total,saldoutilizado){
 	$('#pelicula').html(pelicula);
 	 $('#cantidad').html(cantidad);
 	 $('#ticket').html(ticket);
 	 $('#total').html(total);
+	 $('#saldoutilizado').html(saldoutilizado);
 	$('#commentModal').modal();
 	
 }
