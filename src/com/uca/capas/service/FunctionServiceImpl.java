@@ -27,7 +27,9 @@ public class FunctionServiceImpl implements FunctionService{
 	@Autowired
 	FunctionRepository functionRepository ;
 	
-	
+	public List<Function> findAllByFilmId(int filmId) {
+		return this.functionRepository.findAllByFilmId(filmId);
+	}
 
 	public List<Function> findAll(int page) {
 		// TODO Auto-generated method stub
