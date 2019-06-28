@@ -40,7 +40,10 @@ body{
 <body id="page-top">
 
         <div class="col-sm-10 col-md-10 col-lg-10 offset-sm-1 offset-md-1 offset-lg-1">
-<h1>Listado Transacciones</h1>
+<h1>Listado Transacciones</h1><br>
+<form method="POST" action="${pageContext.request.contextPath}/logout" >
+  <button type="submit" class="btn btn-danger btnleft">Log Out</button>
+  </form><br>
 <form class="form-horizontal" action="" method="get">
   <div class="form-row">
   
@@ -78,7 +81,7 @@ body{
 	</div>
 	
 <br/>
-	<table class="table table-sm">
+	<table class="table table-sm table-bordered">
 		<thead>
 		  <tr>
 		    <th scope="col">Accion</th>
