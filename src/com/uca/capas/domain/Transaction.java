@@ -29,11 +29,11 @@ public class Transaction {
 	private Integer idtransaction;
 	
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_account", referencedColumnName = "id_account")
 	private Account account;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_function", referencedColumnName = "id_function")
 	private Function function;
 	
