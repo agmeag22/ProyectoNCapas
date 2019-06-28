@@ -98,7 +98,11 @@ public class CinemaController {
 		float saldocuenta=accountService.findOne((int)session.getAttribute("account_id")).getCredit();;
 		float saldoutilizado=0;
 		float saldocuentaaux=saldocuenta;
-	
+		int totalasientos=functionService.findOne(idfunction).getAvailability();
+		if(ticketquantity>totalasientos) {
+			mav.setViewName("redirect:/film-detail/{id}/reserva");
+			return mav;
+		}
 		transaction.setAccount(accountService.findOne((int)session.getAttribute("account_id")));
 		transaction.setFunction(functionService.findOne(idfunction));
 		transaction.setTicketquantity(ticketquantity);
@@ -143,6 +147,9 @@ public class CinemaController {
 		Account account=accountService.findOne(idaccount);
 		account.setCredit(saldocuenta);
 		accountService.save(account);
+		Function function=functionService.findOne(idfunction);
+		function.setAvailability(function.getAvailability()-ticketquantity);
+		functionService.save(function);
 		transactionService.save((Transaction)session.getAttribute("transaction"));
 		return new ModelAndView("redirect:/transaction/list");
 	}
