@@ -41,15 +41,20 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="${pageContext.request.contextPath}/account/list">
           <i class="fas fa-fw fa-users"></i>
           <span>Usuarios</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="${pageContext.request.contextPath}/function/list">
           <i class="fas fa-fw fa-film"></i>
           <span>Cartelera</span></a>
+      </li>
+       <li class="nav-item ">
+        <a class="nav-link" href="${pageContext.request.contextPath}/film/list">
+          <i class="fas fa-fw fa-film"></i>
+          <span>Peliculas</span></a>
       </li>
     </ul>
 
@@ -57,7 +62,7 @@
 
       <div class="container-fluid">        
         <!-- DataTables Example -->
-        <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
+        <div class="col-sm-10 col-md-10 col-lg-10 offset-sm-1 offset-md-1 offset-lg-1">
 <h1>Ver Todos</h1>
 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
 		
@@ -96,8 +101,23 @@
 			<td>${account.idaccount}</td>
 			<td>${account.username}</td>
 			<td>${account.password}</td>
-			<td>${account.onlinestatus}</td>
-			<td>${account.activestate}</td>
+			
+			<c:set var = "online" value = "${account.onlinestatus}"/>
+			<c:if test = "${online<1}">
+			<td><button class="btn btn-danger btn-sm">Offline</button></td>
+			</c:if>
+			<c:if test = "${online>0}">
+			<td><button class="btn btn-success btn-sm">Online</button></td>
+			</c:if>
+			<c:set var = "active" value = "${account.activestate}"/>
+			<c:if test = "${active<1}">
+			<td><button class="btn btn-danger btn-sm">Inactivo</button></td>
+			</c:if>
+			<c:if test = "${active>0}">
+			<td><button class="btn btn-success btn-sm">Activo</button></td>
+			</c:if>
+			<td></td>
+			
 			</tr>	
 		</c:forEach>
 	</tbody>

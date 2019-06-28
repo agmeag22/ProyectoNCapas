@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -32,8 +33,13 @@
 			}
 			
 			.card-img-top {
-				height: 400px;
+				height: auto;
 			}
+			
+		body{
+		  background-position: center;
+		  background-image: url("./resources/prism.png");
+		  }
 		</style>
 	</head>
 	<body>
@@ -55,13 +61,13 @@
 				<div class="film-detail">
 					<div class="row">
 						<c:forEach items="${films}" var="film">
-				    		<div class="col-md-4">
+				    		<div class="col-md-3">
 				    			<div class="card">
-								  <img src="${film.urlposter}" class="card-img-top">
+								  <img src="${film.urlposter}" class="card-img-top" >
 								  <div class="card-body">
-								    <p class="card-text">PelÌcula: ${film.filmname}</p>
-								    <p class="card-text">DuraciÛn: ${film.duration}</p>
-								    <a href="${pageContext.request.contextPath}/film-detail/${film.idfilm}" class="btn btn-outline-warning w-100" name="id">Ver m·s.</a>
+								    <p class="card-text">Pel√≠cula: ${film.filmname}</p>
+								    <p class="card-text">Duraci√≥n: ${film.duration}</p>
+								    <a href="${pageContext.request.contextPath}/film-detail/${film.idfilm}" class="btn btn-outline-warning w-100" name="id">Ver m√°s.</a>
 								  </div>
 								</div>
 				    		</div>

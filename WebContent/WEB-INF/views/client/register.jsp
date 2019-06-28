@@ -9,42 +9,27 @@
 <title>Crear Usuario</title>
 
   <!-- Custom fonts for this template-->
-  <link href="./../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="./resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Page level plugin CSS-->
-  <link href="./../../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="./resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="./../../resources/css/sb-admin.css" rel="stylesheet">
+  <link href="./resources/css/sb-admin.css" rel="stylesheet">
 
+<style type="text/css">
+	.wraper{
+		display:flex;
+		align-content: center;
+		justify-content: center;
+	}
+
+</style>
 </head>
 
 <body id="page-top">
-
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-    <a class="navbar-brand mr-1" href="index.html">Dashboard</a>
-
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
-        <a class="nav-link ">
-          <button class="btn btn-outline-danger btn-sm btn-block" >Logout</button>
-        </a>  
-      </li>
-    </ul>
-
-  </nav>
-
-      <div class="container-fluid">        
-        <!-- DataTables Example -->
-        <div class="col-sm-10 col-md-8 col-lg-8 offset-sm-1 offset-md-2 offset-lg-2">
-	<h1>Ver Usuario</h1>
-
-
+<div class="wraper">
+<form action="${pageContext.request.contextPath}/client/store" method="post">
    <div class="form-group">
     <label for="inputName">Nombre</label>
     <input type="text" class="form-control" id="inputName" name="uname" aria-describedby="nameHelp" required>
@@ -65,15 +50,34 @@
  
   <div class="form-group">
     <label for="inputPoster">Pais</label>
-    <input type="text" class="form-control" id="inputCountry" name="ucountry" aria-describedby="countryHelp"  required>
-    <small id="countryHelp" class="form-text text-muted">Pais de la persona.</small>
+     <div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		  <select class="custom-select" id="inputPais" name="ucountry" aria-describedby="countryHelp" required> 
+		  	<c:forEach items="${countries}" var="country">
+		    <option value="${country.name}">${country.name}</option>
+		    </c:forEach>
+		  </select>
+		</div> 
+   
   </div>
-   <div class="form-group">
-    <label for="inputMunicipality">Municipio</label>
-    <input type="text" class="form-control" id="inputMunicipality" name="umunicipality" aria-describedby="municipalityHelp"  required>
-    <small id="municipalityHelp" class="form-text text-muted">Municipio de la persona.</small>
+  </div> 
+   <small id="countryHelp" class="form-text text-muted">Pais de la persona.</small> 
+    <div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		  <select class="custom-select" id="inputMunicipality" name="umunicipality" aria-describedby="municipalityHelp" required> 
+		  	<c:forEach items="${municipalities}" var="municipality">
+		    <option value="${municipality.municipio}">${municipality.municipio}</option>
+		    </c:forEach>
+		  </select> 
+		</div> 
   </div>
+   <small id="municipalityHelp" class="form-text text-muted">Municipio de la persona.</small>
 
+<div class="form-group">
+    <label for="inputAddress">Dirección</label>
+    <input type="text" class="form-control" id="inputAddress" name="uaddress" aria-describedby="addressHelp"  required>
+    <small id="addressHelp" class="form-text text-muted">Dirección fisica de la persona (Domicilio).</small>
+  </div>
   
    <div class="form-group">
     <label for="inputUsername">Username</label>
@@ -85,37 +89,9 @@
     <input type="text" class="form-control" id="inputPassword" name="password" aria-describedby="passwordHelp"  required>
     <small id="passwordHelp" class="form-text text-muted"> Contraseña de Usuario.</small>
   </div>
-  
-   <div class="form-group">
-    <label for="inputState">Estado del usuario</label>
-    <input type="text" class="form-control" id="inputState name="activestate" aria-describedby="activestateHelp" required >
-    <small id="activestateHelp" class="form-text text-muted">Estado activo o inactivo</small>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
   </div>
   
-  <div class="form-group">
-    <label for="inputOnline">Online</label>
-    <input type="text" class="form-control" id="inputOnline" name="onlinestatus" aria-describedby="OnlineHelp"  required>
-    <small id="OnlineHelp" class="form-text text-muted"> Estado Online.</small>
-  </div>
-  
-   <div class="form-group">
-    <label for="inputComentario">Comentario</label>
-    <input type="text" class="form-control" id="inputComentario" name="comment" aria-describedby="commentHelp" required>
-    <small id="commentHelp" class="form-text text-muted">Comentario en caso de ser desactivado.</small>
-  </div>
-  <div class="form-group">
-    <label for="inputCredit">Credito</label>
-    <input type="text" class="form-control" id="inputCredit" name="credit" aria-describedby="creditHelp"  required>
-    <small id="creditHelp" class="form-text text-muted"> Credito disponible del usuario.</small>
-  </div>
-  
-  <div class="form-group">
-    <label for="inputRole">Rol</label>
-    <input type="text" class="form-control" id="inputCredit" name="idrole" aria-describedby="roleHelp"  required>
-    <small id="roleHelp" class="form-text text-muted"> Rol del usuario.</small>
-  </div>
-          
- 
-
 </body>
 </html>
