@@ -26,10 +26,25 @@
 
         <div class="col-sm-10 col-md-10 col-lg-10 offset-sm-1 offset-md-1 offset-lg-1">
 <h1>Listado Transacciones</h1>
+<form class="needs-validation" action="" method="get">
+  <div class="form-row">
+  
+	    <div class="col-md-4 col-lg-2 mb-3">
+	    <label>Inicio:</label>
+		<input type="date" class="form-control" name="start" />
+		</div>
+		<div class="col-md-4 col-lg-2 mb-3">
+		<label>Fin:</label>
+		<input type="date" class="form-control" name="end" />
+		</div>
+		<div class="col-md-4 col-lg-2 mb-3">
+		<label></label>
+		<input type="submit" class="form-control" value="Filtrar"/>
+		</div>
+	</div>
+	</form>
 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
 		<div class="btn-group btn-group align-left" role="group" >
-	
-		
 		</div>
 		
 			<div class="btn-group align-rigth" role="group" aria-label="Button group with nested dropdown">

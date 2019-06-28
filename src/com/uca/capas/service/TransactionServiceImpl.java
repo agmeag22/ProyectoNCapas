@@ -1,5 +1,6 @@
 package com.uca.capas.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,12 @@ public class TransactionServiceImpl implements TransactionService{
 	public List<Transaction> findAll(int page,Account id) {
 		// TODO Auto-generated method stub
 		return transactionRepository.findByAccount(id,PageRequest.of(page, 10, new Sort(Direction.ASC, "idtransaction"))).getContent();
+	}
+	
+	
+	public List<Transaction> findAll(Date start,Date end,int page,Account id) {
+		// TODO Auto-generated method stub
+		return transactionRepository.findByTransactiondatehourBetweenAndAccount(start,end,id,PageRequest.of(page, 10, new Sort(Direction.ASC, "idtransaction"))).getContent();
 	}
 	
 	

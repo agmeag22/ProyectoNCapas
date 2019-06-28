@@ -1,5 +1,6 @@
 package com.uca.capas.repositories;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -21,4 +22,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
 	public Page<Transaction> findAll(Pageable page);
 	
 	public Page<Transaction> findByAccount(Account account,Pageable page);
+	public Page<Transaction> findByTransactiondatehourBetweenAndAccount(Date start,Date end,Account a,Pageable page);
+	
 }
