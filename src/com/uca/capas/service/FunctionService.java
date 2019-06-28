@@ -15,5 +15,6 @@ public interface FunctionService {
 	public long countAll();
 	public void save(Function function);
 	public void delete(Function function);
+	public List<Function> findAllByFilmId(int filmId);
 
 }
