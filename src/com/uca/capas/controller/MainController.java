@@ -87,10 +87,10 @@ public class MainController {
 	}
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpSession session,HttpServletRequest request) {
-		int account_id = (Integer)session.getAttribute("account_id");
-		Account account = accountServ.findOne(account_id);
-		account.setOnlinestatus(0);
-		accountServ.save(account);
+//		int account_id = (Integer)session.getAttribute("account_id");
+//		Account account = accountServ.findOne(account_id);
+//		account.setOnlinestatus(0);
+//		accountServ.save(account);
 		session.invalidate();
 		return new ModelAndView("redirect:/");
 	}

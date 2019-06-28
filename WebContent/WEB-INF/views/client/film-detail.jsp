@@ -46,6 +46,20 @@
 				<div class="col-md-6">
 					<p class="card-text">Película: ${film.filmname}</p>
 				    <p class="card-text">Duración: ${film.duration}</p>
+				    <form>
+				    <input type="number" name="ticket_quantity"/>
+				    
+				      <div class="form-group">
+					     <label  for="tickettype">Tipo de Ticket</label>
+					    <select id="tickettype" class="form-control" name="tickettype" required >
+					      
+						  <c:forEach items="${tickettypes}" var="tickettype">
+						  <option value="${tickettype.idtype}">${tickettype.type}</option>
+						  </c:forEach>
+						</select>
+					   
+					  </div>
+				    </form>
 				    <a href="#" class="btn btn-outline-warning w-100">Reservar.</a>
 				</div>
 			</div>
