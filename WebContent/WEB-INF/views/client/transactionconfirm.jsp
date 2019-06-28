@@ -37,6 +37,10 @@
 		  padding: 5%;
 		  color:white;
 		  }
+		  
+		  .card-img-top {
+				height: auto;
+			}
 
 .form-container {
 	width: 50%;
@@ -52,7 +56,7 @@
 			<br>
 			<form action="${pageContext.request.contextPath}/film-detail/${transaction.function.film.idfilm}/reservado"
 				method="post" modelAttribute="transaction">
-				<div class="col-md-4">
+				<div class="col-md-5">
 					<img src="${transaction.function.film.urlposter}" class="card-img-top" height="50%" width="50%">
 				</div>
 				<input name="idfunction" value="${transaction.function.idfunction }" hidden>
