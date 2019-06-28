@@ -40,4 +40,17 @@ public class CinemaController {
 		
 		return filmDetail;
 	}
+	
+	@RequestMapping(value="/transaction/{id}", method = RequestMethod.GET)
+	public ModelAndView transaction (HttpSession session, @PathVariable(value="id") int id, @ModelAttribute(name="transaction") Transaction tran) {
+		if(session.getAttribute("user") == null || session.getAttribute("role") == null || session.getAttribute("account_id") == null || (Integer) session.getAttribute("role") != 1) {
+			return new ModelAndView("redirect:/");
+		}
+		
+		ModelAndView transaction = new ModelAndView();
+		
+		transaction.setViewName("client/transaction");
+		
+		return transaction;
+	}
 }
