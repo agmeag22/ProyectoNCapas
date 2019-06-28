@@ -13,13 +13,10 @@ s
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
 <!-- Custom fonts for this template-->
-<link href="./../../resources/vendor/fontawesome-free/css/all.min.css"
-	rel="stylesheet" type="text/css">
+<link href="./../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
 <!-- Page level plugin CSS-->
-<link
-	href="./../../resources/vendor/datatables/dataTables.bootstrap4.css"
-	rel="stylesheet">
+<link href="./../../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
 <!-- Custom styles for this template-->
 <link href="./../../resources/css/sb-admin.css" rel="stylesheet">
