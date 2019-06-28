@@ -3,9 +3,11 @@ package com.uca.capas.service;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
+import com.uca.capas.domain.Account;
 import com.uca.capas.domain.Transaction;
 import com.uca.capas.domain.User;
 
@@ -15,4 +17,5 @@ public interface TransactionService {
 	public long countAll();
 	public void save(Transaction transaction);
 	public void delete(Transaction transaction);
+	public List<Transaction> findAll(int page,Account id);
 }
