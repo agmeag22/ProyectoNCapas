@@ -10,14 +10,13 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<style>
-			body{
-		  background-position: center;
-		  background-image: url("./../resources/prism.png");
-		  padding: 5%;
-		  color:white;
-		  }
+			body {
+			  background-position: center;
+			  background-image: url("./../resources/prism.png");
+			  padding: 5%;
+			  color:white;
+		  	}
 		
-			
 			.form-container {
 				width: 75%;
 				margin: 0 auto;
@@ -35,33 +34,64 @@
 				margin-bottom: 20px;
 			}
 			
-		.card-img-top {
+			.card-img-top {
 				height: auto;
 			}
 			
 			.btnsize{
 				margin:10px;
 			}
+			
+			.card-film {
+				padding: 25px 25px;
+			}
+			
+			.card-film h3 {
+				color: #222222;
+			}
+			
+			.card-film p {
+				color: #222222;
+			}
+			
+			.card-film .divider {
+				background: #eeeeee;
+			}
+			
+			.description {
+				font-size: 9pt;
+				text-align: justify;
+			}
+			
+			.function-row {
+				padding: 5px;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
+		  <form method="POST" action="${pageContext.request.contextPath}/logout" >
+		  	<button type="submit" class="btn btn-danger btnleft">Log Out</button>
+		  </form>
 			<div class="row">
 				<div class="col-md-4">
 					<img src="${film.urlposter}" class="card-img-top" height="50%" width="50%">
 				</div>
 				<div class="col-md-6">
-
-					<p class="card-text">Película: ${film.filmname}</p>
-				    <p class="card-text">Duración: ${film.duration}</p>
-				    <p class="card-text">Horarios: ${film.filmname}</p>
-				    <div>
-				    <c:forEach items="${functions}" var="function">
-							 <button class="btn btn-light btnsize" disabled>${function.starttime}  -  ${function.tickettype.type}</button>
-						</c:forEach>
-						</div>
-				    <a href="${pageContext.request.contextPath}/film-detail/${film.idfilm}/reserva" class="btn btn-outline-warning w-100" >Reservar.</a>
-					
+					<div class="card container card-film">
+						<h3 class="text-center">${film.filmname}</h3><hr class="divider">
+						<p class="description">${film.description}</p>
+				    	<p class="card-text">Duración: ${film.duration}</p>
+				    	<p class="card-text">Horarios: ${film.filmname}</p><br>
+			    		<div class="row">
+			    			<c:forEach items="${functions}" var="function">
+							  <div class="col-md-6 function-row">
+							  	<button class="btn btn-light w-100" disabled>${function.starttime}  -  ${function.tickettype.type}</button>
+							  </div>
+							</c:forEach>
+			    		</div><br>
+					    <a href="${pageContext.request.contextPath}/film-detail/${film.idfilm}/reserva" class="btn btn-outline-warning w-100" >Reservar.</a>
+					</div>
 				</div>
 			</div>
 		</div>
