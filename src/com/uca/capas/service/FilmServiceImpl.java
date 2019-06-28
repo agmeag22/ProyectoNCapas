@@ -62,6 +62,12 @@ public class FilmServiceImpl implements FilmService{
 	 return filmRepository.findAll();
 	}
 
+	@Override
+	public List<Film> findAllActive() throws DataAccessException {
+		// TODO Auto-generated method stub
+		return filmRepository.findAllbyState();
+	}
+
 	
 	
 }

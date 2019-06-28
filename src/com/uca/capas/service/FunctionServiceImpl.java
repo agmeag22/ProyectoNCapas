@@ -55,4 +55,9 @@ public class FunctionServiceImpl implements FunctionService{
 		functionRepository.delete(function);
 		
 	}
+
+	@Override
+	public List<Function> findAllActiveFunctions() throws DataAccessException {
+		return functionRepository.findAllbyState();
+	}
 }

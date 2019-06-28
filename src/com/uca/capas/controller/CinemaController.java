@@ -31,7 +31,7 @@ public class CinemaController {
 	}
 		ModelAndView dashboard = new ModelAndView();
 		
-		List<Film> filmList = this.filmService.findAll(0);
+		List<Film> filmList = filmService.findAllActive();
 		dashboard.addObject("films", filmList);
 		dashboard.setViewName("client/client-dashboard");
 		
@@ -45,7 +45,7 @@ public class CinemaController {
 		}
 		ModelAndView filmDetail = new ModelAndView();
 		
-		Film film = this.filmService.findOne(id);
+		Film film = filmService.findOne(id);
 		
 		filmDetail.addObject("film", film);
 		filmDetail.setViewName("client/film-detail");

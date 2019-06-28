@@ -16,4 +16,9 @@ import com.uca.capas.domain.Function;
 public interface FunctionRepository extends JpaRepository<Function, Integer>{
 	
 	public Page<Function> findAll(Pageable page);
+	
+	@Query(nativeQuery=true, value="select * from public.table_function where active_state=1")
+	public List<Function> findAllbyState() throws DataAccessException ;
+	
+	
 }

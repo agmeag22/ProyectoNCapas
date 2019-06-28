@@ -8,13 +8,13 @@
 <meta charset="ISO-8859-1">
 <title>Crear Funcion</title>
 <!-- Custom fonts for this template-->
-  <link href="./../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="./../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Page level plugin CSS-->
-  <link href="./../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="./../../resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="./../resources/css/sb-admin.css" rel="stylesheet">
+  <link href="./../../resources/css/sb-admin.css" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style type="text/css">
 	.wraper{
@@ -39,7 +39,7 @@
 		</script> 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">Dashboard</a>
+    <a class="navbar-brand mr-1" >Dashboard</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -117,7 +117,7 @@
   
    <div class="form-check form-group">
     
-    <input type="checkbox" class="form-check-input"  name="activestate" id="activestateCheck" required>
+    <input type="checkbox" class="form-check-input"  name="activestate" id="activestateCheck">
     <label class="form-check-label" for="activestateCheck">Publicar</label>
    
   </div>
