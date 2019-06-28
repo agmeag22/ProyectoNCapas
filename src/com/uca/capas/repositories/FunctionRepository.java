@@ -16,4 +16,7 @@ import com.uca.capas.domain.Function;
 public interface FunctionRepository extends JpaRepository<Function, Integer>{
 	
 	public Page<Function> findAll(Pageable page);
+	
+	@Query(nativeQuery=true, value="select * from table_function WHERE id_film = :filmId")
+	public List<Function> findAllByFilmId(@Param("filmId") int filmId) throws DataAccessException;
 }
