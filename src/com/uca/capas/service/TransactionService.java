@@ -20,4 +20,5 @@ public interface TransactionService {
 	public void delete(Transaction transaction);
 	public List<Transaction> findAll(int page,Account id);
 	public List<Transaction> findAll(Date start,Date end,int page,Account id);
+	public long countAll(Date start,Date end,int page,Account id);
 }

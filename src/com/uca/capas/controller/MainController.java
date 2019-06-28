@@ -56,6 +56,7 @@ public class MainController {
 			}
 		}else {
 			mav.setViewName("login");
+			
 		}
 		
 		

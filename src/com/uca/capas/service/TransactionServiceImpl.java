@@ -59,6 +59,10 @@ public class TransactionServiceImpl implements TransactionService{
 		return transactionRepository.count();
 	}
 
+	public long countAll(Date start,Date end,int page,Account id) {
+		// TODO Auto-generated method stub
+		return transactionRepository.findByTransactiondatehourBetweenAndAccount(start,end,id).size();
+	}
 	
 	public void save(Transaction transaction) {
 		transactionRepository.save(transaction);
