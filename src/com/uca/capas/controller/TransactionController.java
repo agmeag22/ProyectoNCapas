@@ -1,6 +1,10 @@
 package com.uca.capas.controller;
 
+
 import java.util.Date;
+
+import java.text.SimpleDateFormat;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,11 +12,14 @@ import javax.servlet.http.HttpSession;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +37,7 @@ import com.uca.capas.service.TransactionService;
 import com.uca.capas.service.UserService;
 @Controller
 public class TransactionController {
+	
 	@Autowired
 	private TransactionService transService;
 	
@@ -37,14 +45,23 @@ public class TransactionController {
 	private AccountService accountService;
 	
 	
+	 @InitBinder
+	    public void initBinder(WebDataBinder binder) {
+	        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy HH:mm");
+	        sdf.setLenient(true);
+	        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+	    }
+	 
 	@RequestMapping("transaction/list")
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
+
 				@RequestParam(required = false) Integer page,@RequestParam(required = false)  @DateTimeFormat(pattern="yyyy-MM-dd") Date start, @RequestParam(required = false)  @DateTimeFormat(pattern="yyyy-MM-dd") Date end ) throws Exception{
 				if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=2){
 					System.out.println("Se va a retornar :S");
 					return new ModelAndView("redirect:/");
 				}
+
 			ModelAndView mav = new ModelAndView();
 			int pagina=0;
 			System.out.println("La pagina es:"+page);
@@ -77,7 +94,7 @@ public class TransactionController {
 				films = transService.findAll(pagina,account);
 			}
 			
-			System.out.println("El tamañò es:"+films.size());
+			System.out.println("El tamaÃ±Ã² es:"+films.size());
 			//films=(List<Film>) filmRepo.findAll();
 			//Como Page no es una coleccion en si, utilizo el metodo getContent() el cual me devuelve la coleccion (de clientes) que representa la pagina
 			mav.addObject("films", films);

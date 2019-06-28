@@ -1,8 +1,10 @@
 package com.uca.capas.domain;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,7 +42,8 @@ public class Transaction {
 	private Function function;
 	
 	@Column(name = "transaction_date_hour")
-	private String transactiondatehour;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date transactiondatehour;
 	
 	@Column(name = "ticket_quantity")
 	private int ticketquantity;
@@ -70,15 +75,15 @@ public class Transaction {
 		this.function = function;
 	}
 
-	public String getTransactiondatehour() {
+	
+
+	public Date getTransactiondatehour() {
 		return transactiondatehour;
 	}
 
-	public void setTransactiondatehour(String transactiondatehour) {
+	public void setTransactiondatehour(Date transactiondatehour) {
 		this.transactiondatehour = transactiondatehour;
 	}
-
-	
 
 	public int getTicketquantity() {
 		return ticketquantity;
@@ -97,7 +102,9 @@ public class Transaction {
 	}
 
 
-	public Transaction(Integer idtransaction, Account account, Function function, String transactiondatehour,
+	
+
+	public Transaction(Integer idtransaction, Account account, Function function, Date transactiondatehour,
 			int ticketquantity, float total) {
 		super();
 		this.idtransaction = idtransaction;
