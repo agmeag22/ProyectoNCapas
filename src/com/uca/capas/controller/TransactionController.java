@@ -1,7 +1,10 @@
 package com.uca.capas.controller;
 
-import java.sql.Date;
+
+import java.util.Date;
+
 import java.text.SimpleDateFormat;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +16,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -51,10 +55,13 @@ public class TransactionController {
 	@RequestMapping("transaction/list")
 		public ModelAndView vertodos(HttpSession session, 
 				HttpServletRequest request, 
-				@RequestParam(required = false) Integer page ) throws Exception{
-		if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=2){
-			return new ModelAndView("redirect:/");
-		}
+
+				@RequestParam(required = false) Integer page,@RequestParam(required = false)  @DateTimeFormat(pattern="yyyy-MM-dd") Date start, @RequestParam(required = false)  @DateTimeFormat(pattern="yyyy-MM-dd") Date end ) throws Exception{
+				if(session.getAttribute("user") == null || session.getAttribute("role")==null || session.getAttribute("account_id")==null || (Integer)session.getAttribute("role")!=2){
+					System.out.println("Se va a retornar :S");
+					return new ModelAndView("redirect:/");
+				}
+
 			ModelAndView mav = new ModelAndView();
 			int pagina=0;
 			System.out.println("La pagina es:"+page);
@@ -81,8 +88,13 @@ public class TransactionController {
 			//Page = objeto de spring data que representa la pagina
 			List<Transaction> films = null;
 			Account account = accountService.findOne((int)session.getAttribute("account_id"));
-			films = transService.findAll(pagina,account);
-			System.out.println("El tamañò es:"+films.size());
+			if(start!=null && end!=null) {
+				films = transService.findAll(start,end,pagina,account);
+			}else {
+				films = transService.findAll(pagina,account);
+			}
+			
+			System.out.println("El tamaÃ±Ã² es:"+films.size());
 			//films=(List<Film>) filmRepo.findAll();
 			//Como Page no es una coleccion en si, utilizo el metodo getContent() el cual me devuelve la coleccion (de clientes) que representa la pagina
 			mav.addObject("films", films);

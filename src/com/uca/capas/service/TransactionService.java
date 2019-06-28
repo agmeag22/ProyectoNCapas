@@ -1,5 +1,6 @@
 package com.uca.capas.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
@@ -18,4 +19,5 @@ public interface TransactionService {
 	public void save(Transaction transaction);
 	public void delete(Transaction transaction);
 	public List<Transaction> findAll(int page,Account id);
+	public List<Transaction> findAll(Date start,Date end,int page,Account id);
 }
