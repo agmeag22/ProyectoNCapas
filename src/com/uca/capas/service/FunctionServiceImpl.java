@@ -60,4 +60,10 @@ public class FunctionServiceImpl implements FunctionService{
 	public List<Function> findAllActiveFunctions() throws DataAccessException {
 		return functionRepository.findAllbyState();
 	}
+
+	@Override
+	public List<Function> findAllbyIdFilm(int id) {
+		// TODO Auto-generated method stub
+		return functionRepository.findAllbyId(id);
+	}
 }

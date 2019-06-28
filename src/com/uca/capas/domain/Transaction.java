@@ -41,7 +41,7 @@ public class Transaction {
 	private String transactiondatehour;
 	
 	@Column(name = "ticket_quantity")
-	private String ticketquantity;
+	private int ticketquantity;
 	
 	@Column(name = "total")
 	private float total;
@@ -78,11 +78,13 @@ public class Transaction {
 		this.transactiondatehour = transactiondatehour;
 	}
 
-	public String getTicketquantity() {
+	
+
+	public int getTicketquantity() {
 		return ticketquantity;
 	}
 
-	public void setTicketquantity(String ticketquantity) {
+	public void setTicketquantity(int ticketquantity) {
 		this.ticketquantity = ticketquantity;
 	}
 
@@ -94,8 +96,9 @@ public class Transaction {
 		this.total = total;
 	}
 
+
 	public Transaction(Integer idtransaction, Account account, Function function, String transactiondatehour,
-			String ticketquantity, float total) {
+			int ticketquantity, float total) {
 		super();
 		this.idtransaction = idtransaction;
 		this.account = account;

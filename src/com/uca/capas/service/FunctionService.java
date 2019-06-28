@@ -17,5 +17,5 @@ public interface FunctionService {
 	public void delete(Function function);
 	
 	public List<Function> findAllActiveFunctions()throws DataAccessException ;
-
+	public List<Function> findAllbyIdFilm(int id);
 }

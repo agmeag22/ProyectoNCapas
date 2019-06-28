@@ -20,5 +20,8 @@ public interface FunctionRepository extends JpaRepository<Function, Integer>{
 	@Query(nativeQuery=true, value="select * from public.table_function where active_state=1")
 	public List<Function> findAllbyState() throws DataAccessException ;
 	
+	@Query(nativeQuery=true, value="select * from public.table_function where active_state=1 and id_film=:id")
+	public List<Function> findAllbyId(@Param("id")int id) throws DataAccessException ;
+	
 	
 }

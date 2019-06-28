@@ -24,7 +24,7 @@ public interface FilmRepository extends PagingAndSortingRepository<Film, Integer
 	
 	
 	
-	@Query(nativeQuery=true, value="select fi.id_film, fi.film_name, fi.description, fi.duration, fi.url_poster\r\n" + 
+	@Query(nativeQuery=true, value="select DISTINCT fi.id_film, fi.film_name, fi.description, fi.duration, fi.url_poster\r\n" + 
 			"	from table_film fi INNER JOIN table_function fu ON fi.id_film=fu.id_film\r\n" + 
 			"	WHERE fu.active_state=1")
 	public List<Film> findAllbyState() throws DataAccessException ;
